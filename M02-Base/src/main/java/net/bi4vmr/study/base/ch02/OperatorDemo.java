@@ -14,7 +14,7 @@ package net.bi4vmr.study.base.ch02;
 public class OperatorDemo {
 
     public static void main(String[] args) {
-        example05();
+        example08();
     }
 
     static void example01() {
@@ -77,5 +77,46 @@ public class OperatorDemo {
 
         boolean b2 = false & (a++) == 6;
         System.out.println("a = " + a);
+    }
+
+    static void example06() {
+        int a = 0x25;		// 25H	-> 0010 0101B
+        int b = 0xCE;		// CEH	-> 1100 1110B
+        int m = a & b;	    // 4D	-> 0000 0100B
+        int n = a | b;	    // 239D	-> 1110 1111B
+        int o = ~a;		    // -38D	-> 1101 1010B
+        int p = a ^ b;	    // 235D	-> 1110 1011B
+        int x = a << 2;	    // 148D	-> 1001 0100B
+        int y = a >> 2;	    // 9D	-> 0000 1001B
+
+        System.out.println("a    = " + a);
+        System.out.println("b    = " + b);
+        System.out.println("a&b  = " + m);
+        System.out.println("a|b  = " + n);
+        System.out.println("~a   = " + o);
+        System.out.println("a^b  = " + p);
+        System.out.println("a<<2 = " + x);
+        System.out.println("a>>2 = " + y);
+    }
+
+    static void example07() {
+        int a = 1;
+        int b = 2;
+
+        int c = (a >= b) ? (a * 100) : (b * 100);
+        System.out.println("c = " + c);
+    }
+
+    static void example08() {
+        int a = 1;
+        int b = 2;
+        int c;
+
+        if (a >= b) {
+            c = a * 100;
+        } else {
+            c = b * 100;
+        }
+        System.out.println("c = " + c);
     }
 }

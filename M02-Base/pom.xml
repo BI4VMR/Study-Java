@@ -6,11 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>net.bi4vmr</groupId>
+        <groupId>net.bi4vmr.study</groupId>
         <artifactId>study-java</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>base</artifactId>
-    <name>Base</name>
+    <artifactId>m02-base</artifactId>
+    <name>M02-Base</name>
+    <description>基本语法</description>
 </project>

@@ -6,11 +6,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>net.bi4vmr</groupId>
+        <groupId>net.bi4vmr.study</groupId>
         <artifactId>study-java</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>advance</artifactId>
-    <name>Advance</name>
+    <artifactId>m04-utils</artifactId>
+    <name>M04-Utils</name>
+    <description>实用工具</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.16</version>
+        </dependency>
+    </dependencies>
 </project>
