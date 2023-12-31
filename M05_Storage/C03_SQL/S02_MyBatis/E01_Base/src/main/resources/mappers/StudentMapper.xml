@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 通过"namespace"属性指明Mapper文件对应的Java接口 -->
+<mapper namespace="net.bi4vmr.study.storage.mybatis.base.mapper.StudentMapper">
+
+    <!-- 通过"id"属性指明Java接口中的方法名称 -->
+    <insert id="insertStudent">
+        INSERT INTO student VALUES(null, 'Test');
+    </insert>
+</mapper>

@@ -1,0 +1,81 @@
+// 构建工具的依赖配置
+pluginManagement {
+    // 声明Gradle插件仓库
+    repositories {
+        // 添加本地私有仓库与代理镜像，无法直连时应当禁用该配置。
+        def hostInfo = InetAddress.getLocalHost().toString()
+        println("Current host info is " + hostInfo)
+        if (hostInfo.startsWith("BI4VMR") && hostInfo.contains("172.18.")) {
+            println("Current host is in private network, add private repository.")
+            maven {
+                allowInsecureProtocol = true
+                url = "http://172.18.5.1:8081/repository/maven-union/"
+            }
+        } else {
+            println("Current host not in private network.")
+        }
+
+        // 腾讯云仓库镜像：Maven中心仓库
+        maven { url = "https://mirrors.cloud.tencent.com/nexus/repository/maven-public/" }
+        // 阿里云仓库镜像：Gradle社区插件
+        maven { url = "https://maven.aliyun.com/repository/gradle-plugin/" }
+
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
+}
+
+// 所有模块的依赖配置
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    // 声明Maven组件仓库
+    repositories {
+        // 添加本地私有仓库与代理镜像，无法直连时应当禁用该配置。
+        def hostInfo = InetAddress.getLocalHost().toString()
+        if (hostInfo.startsWith("BI4VMR") && hostInfo.contains("172.18.")) {
+            maven {
+                allowInsecureProtocol = true
+                url = "http://172.18.5.1:8081/repository/maven-union/"
+            }
+        }
+
+        // 腾讯云仓库镜像：Maven中心仓库
+        maven { url = "https://mirrors.cloud.tencent.com/nexus/repository/maven-public/" }
+
+        mavenCentral()
+        google()
+    }
+
+    // 版本管理配置
+    versionCatalogs {
+        // 声明命名空间"libs"
+        "libs" {
+            // 导入依赖版本配置文件
+            from(files("dependency.toml"))
+        }
+    }
+}
+
+/* ----- 工程结构声明 ----- */
+// 主工程名称
+rootProject.name = "Study-Java"
+
+/* ----- 基础知识 ----- */
+include(":M01_Overview:C00_Temporary")
+include(":M01_Overview:C01_HelloWorld")
+
+/* ----- 基本语法 ----- */
+include(":M02_Syntax:C01_Base")
+
+/* ----- 高级特性 ----- */
+include(":M03_Advance:C01_OOP")
+include(":M03_Advance:C02_Features")
+include(":M03_Advance:C03_Concurrent")
+
+/* ----- 实用工具 ----- */
+include(":M04_Utils")
+
+/* ----- 数据存储 ----- */
+include(":M05_Storage:C03_SQL:S01_JDBC")
+include(":M05_Storage:C03_SQL:S02_MyBatis:E01_Base")

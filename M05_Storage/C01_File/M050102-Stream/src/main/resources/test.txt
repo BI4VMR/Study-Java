@@ -1,0 +1,4 @@
+GNU is not unix
+WINE is not an emulator
+PHP hypertext preprocessor
+我能吞下玻璃而不伤身体。
