@@ -20,40 +20,56 @@ import java.util.TimerTask;
 public class TestTimer {
 
     public static void main(String[] args) {
-        example01();
+        example04();
     }
 
     /*
-     * Timer
+     * Timer的基本应用
      */
     static void example01() {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(2000L);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                System.out.println("Time: " + LocalDateTime.now());
+                System.out.println("Exec Time: " + LocalDateTime.now());
             }
         };
+
+        // 创建Timer实例
         Timer timer = new Timer();
-        timer.schedule(timerTask, 1000L, 1000L);
-        timer.schedule(timerTask, 1000L, 1000L);
-        timer.schedule(timerTask, 1000L, 1000L);
-        // timer.schedule();
+
+        // 以当前时刻为参考点，在1000毫秒之后执行任务TimerTask。
+        // timer.schedule(timerTask, 1000L);
+
+        // 以当前时刻为参考点，在1秒之后执行任务TimerTask，且每隔1秒重复执行一次。
+        // timer.schedule(timerTask, 1000L, 1000L);
+
+        // 在”当前时刻+3秒“执行任务TimerTask。
+        // Date date = new Date();
+        // date.setTime(System.currentTimeMillis() + 3000L);
+        // timer.schedule(timerTask, date);
+
+        // 在”当前时刻+3秒“执行任务TimerTask，且每隔1秒重复执行一次。
+        // Date date = new Date();
+        // date.setTime(System.currentTimeMillis() + 3000L);
+        // timer.schedule(timerTask, date, 1000L);
+
+        // 以当前时刻为参考点，在1秒之后执行任务TimerTask，且每隔1秒重复执行一次。
         // timer.scheduleAtFixedRate(timerTask, 1000L, 1000L);
+
+        // 在”当前时刻+3秒“执行任务TimerTask，在1秒之后执行任务TimerTask，且每隔1秒重复执行一次。
+        Date date = new Date();
+        date.setTime(System.currentTimeMillis() + 3000L);
+        timer.scheduleAtFixedRate(timerTask, date, 1000L);
     }
 
     /*
-     * Timer
+     * "schedule"方法
      */
     static void example02() {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Time: " + LocalTime.now());
+                System.out.println("Exec Time: " + LocalTime.now());
             }
         };
 
@@ -74,13 +90,13 @@ public class TestTimer {
     }
 
     /*
-     * Timer
+     * "scheduleAtFixedRate"方法
      */
     static void example03() {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Time: " + LocalTime.now());
+                System.out.println("Exec Time: " + LocalTime.now());
             }
         };
 
@@ -98,5 +114,46 @@ public class TestTimer {
         // 创建Timer并开启任务，参考时间点设置为3秒前。
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(timerTask, date, 1000L);
+    }
+
+    /*
+     * 取消任务
+     */
+    static void example04() {
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("Exec start. Time: " + LocalDateTime.now());
+                // try {
+                //     Thread.sleep(3000L);
+                // } catch (InterruptedException e) {
+                //     e.printStackTrace();
+                // }
+                System.out.println("Exec end. Time: " + LocalDateTime.now());
+            }
+        };
+
+        TimerTask timerTask1 = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("1 Exec start. Time: " + LocalDateTime.now());
+                // try {
+                //     Thread.sleep(3000L);
+                // } catch (InterruptedException e) {
+                //     e.printStackTrace();
+                // }
+                System.out.println("1 Exec end. Time: " + LocalDateTime.now());
+            }
+        };
+
+        Timer timer = new Timer();
+        timer.schedule(timerTask, 1000L, 1000L);
+        timer.schedule(timerTask1, 1000L, 2000L);
+        // try {
+        //     Thread.sleep(1000L);
+        // } catch (InterruptedException e) {
+        //     e.printStackTrace();
+        // }
+        timer.cancel();
     }
 }

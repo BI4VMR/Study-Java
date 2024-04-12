@@ -76,5 +76,5 @@ include(":M03_Advance:C03_Concurrent")
 include(":M04_Utils")
 
 /* ----- 数据存储 ----- */
-include(":M05_Storage:C03_SQL:S01_JDBC")
+// include(":M05_Storage:C03_SQL:S01_JDBC")
 include(":M05_Storage:C03_SQL:S02_MyBatis:E01_Base")
