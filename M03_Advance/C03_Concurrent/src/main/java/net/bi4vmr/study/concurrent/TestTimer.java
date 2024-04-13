@@ -63,9 +63,32 @@ public class TestTimer {
     }
 
     /*
-     * "schedule"方法
+     * 取消任务
      */
     static void example02() {
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("Exec start. Time: " + LocalDateTime.now());
+                System.out.println("Exec end. Time: " + LocalDateTime.now());
+            }
+        };
+
+        Timer timer = new Timer();
+        timer.schedule(timerTask, 1000L, 1000L);
+
+        try {
+            Thread.sleep(5000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        timer.cancel();
+    }
+
+    /*
+     * "schedule"方法
+     */
+    static void example03() {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -92,7 +115,7 @@ public class TestTimer {
     /*
      * "scheduleAtFixedRate"方法
      */
-    static void example03() {
+    static void example04() {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -114,46 +137,5 @@ public class TestTimer {
         // 创建Timer并开启任务，参考时间点设置为3秒前。
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(timerTask, date, 1000L);
-    }
-
-    /*
-     * 取消任务
-     */
-    static void example04() {
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("Exec start. Time: " + LocalDateTime.now());
-                // try {
-                //     Thread.sleep(3000L);
-                // } catch (InterruptedException e) {
-                //     e.printStackTrace();
-                // }
-                System.out.println("Exec end. Time: " + LocalDateTime.now());
-            }
-        };
-
-        TimerTask timerTask1 = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("1 Exec start. Time: " + LocalDateTime.now());
-                // try {
-                //     Thread.sleep(3000L);
-                // } catch (InterruptedException e) {
-                //     e.printStackTrace();
-                // }
-                System.out.println("1 Exec end. Time: " + LocalDateTime.now());
-            }
-        };
-
-        Timer timer = new Timer();
-        timer.schedule(timerTask, 1000L, 1000L);
-        timer.schedule(timerTask1, 1000L, 2000L);
-        // try {
-        //     Thread.sleep(1000L);
-        // } catch (InterruptedException e) {
-        //     e.printStackTrace();
-        // }
-        timer.cancel();
     }
 }
