@@ -136,6 +136,7 @@ public class TestTimer {
 
         // 创建Timer并开启任务，参考时间点设置为3秒前。
         Timer timer = new Timer();
+        timer.cancel();
         timer.scheduleAtFixedRate(timerTask, date, 1000L);
     }
 }

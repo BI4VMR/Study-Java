@@ -9,7 +9,7 @@ package net.bi4vmr.study.concurrent;
  * <p>
  * Date        : 2023-08-27 22:45
  * <p>
- * Description : 测试类 - 并发与多任务。
+ * Description : 测试类 - 线程。
  */
 public class TestThread {
 
@@ -21,7 +21,7 @@ public class TestThread {
      * 创建线程：继承Thread类
      */
     static void example01() {
-        // 构造MyThread对象，每个MyThread对象都是一个独立的线程。
+        // 构造MyThread实例，每个MyThread实例都是一个独立的线程。
         MyThread thread = new MyThread();
         // 启动线程，执行"run()"方法中的任务。
         thread.start();
@@ -36,7 +36,7 @@ public class TestThread {
      * 创建线程：通过Thread的有参构造方法初始化
      */
     static void example02() {
-        // 构造Thread对象，并通过构造方法传入任务。
+        // 构造Thread实例，并通过构造方法传入任务。
         Thread thread = new Thread(
                 // 创建匿名内部类，实现Runnable接口。
                 new Runnable() {
@@ -62,7 +62,7 @@ public class TestThread {
      * 线程的调度：休眠
      */
     static void example03() {
-        // 构造Thread对象，并通过构造方法传入任务。
+        // 构造Thread实例，并通过构造方法传入任务。
         Thread thread = new Thread(() -> {
             System.out.println("Thread start time:" + System.currentTimeMillis());
             try {

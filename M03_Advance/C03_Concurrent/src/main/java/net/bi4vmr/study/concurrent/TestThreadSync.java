@@ -1,7 +1,7 @@
 package net.bi4vmr.study.concurrent;
 
 /**
- * Name        : TestSync
+ * Name        : TestThreadSync
  * <p>
  * Author      : BI4VMR
  * <p>
@@ -11,7 +11,7 @@ package net.bi4vmr.study.concurrent;
  * <p>
  * Description : 测试类 - 线程间的同步。
  */
-public class TestSync {
+public class TestThreadSync {
 
     public static void main(String[] args) {
         example03();
