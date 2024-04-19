@@ -1,16 +1,16 @@
-package net.bi4vmr.study.base.ch01;
+package net.bi4vmr.study;
 
 import java.math.BigDecimal;
 
 /**
- * Name        : JavadocDemo
+ * Name        : TestJavadoc
  * <p>
  * Description : Java文档注释示例。
  *
  * @author BI4VMR
  * @version 1.0
  */
-public class JavadocDemo {
+public class TestJavadoc {
 
     /**
      * Name        : 计算两数之和

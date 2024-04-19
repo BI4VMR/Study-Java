@@ -1,4 +1,4 @@
-package net.bi4vmr.study.base.ch01;
+package net.bi4vmr.study;
 
 /**
  * Name        : VariableDemo
@@ -9,7 +9,7 @@ package net.bi4vmr.study.base.ch01;
  * <p>
  * Date        : 2022-11-25 23:47
  * <p>
- * Description : Java文档注释示例。
+ * Description : 测试类 - Java文档注释。
  */
 public class VariableDemo {
 
