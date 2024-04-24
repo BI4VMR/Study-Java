@@ -15,10 +15,10 @@ public class TestJavadoc {
     /**
      * Name        : 计算两数之和
      * <p>
-     * Description : 计算两数之和，功能类似于{@link java.math.BigDecimal#add(BigDecimal)}。
+     * Description : 功能类似于{@link java.math.BigDecimal#add(BigDecimal)}。
      *
-     * @param a 运算数1
-     * @param b 运算数2
+     * @param a 运算数1。
+     * @param b 运算数2。
      * @return 两个运算数的和。
      */
     public static int sum(int a, int b) {
