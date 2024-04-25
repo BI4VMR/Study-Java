@@ -65,7 +65,7 @@ include(":M01_Overview:C00_Temporary")
 include(":M01_Overview:C01_HelloWorld")
 
 /* ----- 基本语法 ----- */
-include(":M02_Syntax:C01_Base")
+include(":M02_Syntax:C01_Struct")
 include(":M02_Syntax:C02_Operator")
 include(":M02_Syntax:C03_Control")
 include(":M02_Syntax:C04_Method")
