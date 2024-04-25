@@ -3,9 +3,7 @@ package net.bi4vmr.study;
 import java.math.BigDecimal;
 
 /**
- * Name        : TestComment
- * <p>
- * Description : 测试类 - Java文档注释。
+ * 测试类 - Java文档注释
  *
  * @author BI4VMR
  * @version 1.0
@@ -13,9 +11,9 @@ import java.math.BigDecimal;
 public class TestComment {
 
     /**
-     * Name        : 计算两数之和
+     * 计算两数之和
      * <p>
-     * Description : 功能类似于{@link BigDecimal#add(BigDecimal)}。
+     * 功能类似于{@link BigDecimal#add(BigDecimal)}。
      *
      * @param a 运算数1。
      * @param b 运算数2。
