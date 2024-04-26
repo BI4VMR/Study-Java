@@ -1,15 +1,9 @@
 package net.bi4vmr.study;
 
 /**
- * Name        : TestVariable
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2022-11-25 23:47
- * <p>
- * Description : 测试类 - 变量与常量。
+ * 测试类 - Java文档注释
+ *
+ * @author BI4VMR
  */
 public class TestVariable {
 
