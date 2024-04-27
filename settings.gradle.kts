@@ -74,7 +74,7 @@ include(":M02_Syntax:C06_Array")
 include(":M02_Syntax:C07_Exception")
 
 /* ----- 高级特性 ----- */
-include(":M03_Advance:C01_OOP")
+include(":M03_Advance:C01_OOP:S01_Base")
 include(":M03_Advance:C02_Features")
 include(":M03_Advance:C03_Concurrent")
 
