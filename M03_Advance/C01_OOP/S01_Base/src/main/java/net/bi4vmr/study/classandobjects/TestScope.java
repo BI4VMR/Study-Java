@@ -1,15 +1,9 @@
-package net.bi4vmr.study;
+package net.bi4vmr.study.classandobjects;
 
 /**
- * Name        : TestScope
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-12-29 22:31
- * <p>
- * Description : 测试类：变量的作用域。
+ * 测试类 - 变量的作用域。
+ *
+ * @author BI4VMR
  */
 public class TestScope {
 
