@@ -1,4 +1,4 @@
-package net.bi4vmr.study.classandobjects;
+package net.bi4vmr.study.objects;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author BI4VMR
  */
-public class Person3 {
+public class Person {
 
     /* 属性 */
     String name;
@@ -15,10 +15,10 @@ public class Person3 {
     char sex;
 
     /* 构造方法 */
-    public Person3() {
+    public Person() {
     }
 
-    public Person3(String name, int age, char sex) {
+    public Person(String name, int age, char sex) {
         System.out.println("使用有参构造方法初始化对象...");
         this.name = name;
         this.age = age;
@@ -72,7 +72,7 @@ public class Person3 {
         }
 
         // 比较对象的每个属性是否相等
-        Person3 person = (Person3) o;
+        Person person = (Person) o;
         return age == person.age &&
                 sex == person.sex &&
                 Objects.equals(name, person.name);

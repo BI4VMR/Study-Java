@@ -1,6 +1,6 @@
 package net.bi4vmr.study.nullsafe;
 
-import net.bi4vmr.study.classandobjects.Person;
+import net.bi4vmr.study.base.Person;
 
 /**
  * 测试类 - 空值安全。

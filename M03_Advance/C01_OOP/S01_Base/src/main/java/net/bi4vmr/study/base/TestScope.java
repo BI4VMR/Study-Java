@@ -1,4 +1,4 @@
-package net.bi4vmr.study.classandobjects;
+package net.bi4vmr.study.base;
 
 /**
  * 测试类 - 变量的作用域。
@@ -7,6 +7,7 @@ package net.bi4vmr.study.classandobjects;
  */
 public class TestScope {
 
+    // 声明全局变量
     short a;
     int b;
     float c;
@@ -23,7 +24,9 @@ public class TestScope {
      * 示例：全局变量
      */
     static void example01() {
+        // 创建测试类的对象
         TestScope test = new TestScope();
+        // 访问全局变量
         System.out.println("a: " + test.a);
         System.out.println("b: " + test.b);
         System.out.println("c: " + test.c);

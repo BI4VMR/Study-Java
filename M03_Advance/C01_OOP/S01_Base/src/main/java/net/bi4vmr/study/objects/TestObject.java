@@ -1,17 +1,9 @@
-package net.bi4vmr.study;
-
-import net.bi4vmr.study.classandobjects.Person;
+package net.bi4vmr.study.objects;
 
 /**
- * Name        : ObjectDemo
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-07-26 23:07
- * <p>
- * Description : 测试类：Object类。
+ * 测试类 - Object类。
+ *
+ * @author BI4VMR
  */
 public class TestObject {
 
@@ -20,7 +12,7 @@ public class TestObject {
     }
 
     /*
-     * 输出对象信息
+     * 示例：输出对象信息
      */
     static void example01() {
         // 构建对象
@@ -30,7 +22,7 @@ public class TestObject {
     }
 
     /*
-     * 对象之间的判等
+     * 示例：对象之间的判等
      */
     static void example02() {
         Person person1 = new Person("张三", 22, '男');
@@ -41,7 +33,7 @@ public class TestObject {
     }
 
     /*
-     * 对象的哈希值
+     * 示例：对象的哈希值
      */
     static void example03() {
         Person person1 = new Person("张三", 22, '男');

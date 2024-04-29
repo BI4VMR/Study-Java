@@ -1,15 +1,9 @@
-package net.bi4vmr.study;
+package net.bi4vmr.study.base;
 
 /**
- * Name        : InitBlockDemo
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@qq.com
- * <p>
- * Date        : 2022-12-03 19:44
- * <p>
- * Description : 测试类：初始化块。
+ * 测试类 - 初始化块。
+ *
+ * @author BI4VMR
  */
 public class TestInitBlock {
 
