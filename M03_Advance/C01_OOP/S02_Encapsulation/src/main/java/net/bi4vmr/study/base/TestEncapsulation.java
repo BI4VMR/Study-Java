@@ -1,17 +1,11 @@
-package net.bi4vmr.study.encapsulation;
+package net.bi4vmr.study.base;
 
 import java.io.File;
 
 /**
- * Name        : EncapsulationDemo
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-07-31 00:05
- * <p>
- * Description : 封装示例。
+ * 测试类 - 封装。
+ *
+ * @author BI4VMR
  */
 public class TestEncapsulation {
 

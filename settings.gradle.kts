@@ -75,6 +75,12 @@ include(":M02_Syntax:C07_Exception")
 
 /* ----- 高级特性 ----- */
 include(":M03_Advance:C01_OOP:S01_Base")
+include(":M03_Advance:C01_OOP:S02_Encapsulation")
+include(":M03_Advance:C01_OOP:S03_Inherit")
+include(":M03_Advance:C01_OOP:S04_Polymorphism")
+include(":M03_Advance:C01_OOP:S04_Polymorphism")
+include(":M03_Advance:C01_OOP:S07_WrapperClass")
+include(":M03_Advance:C01_OOP:S08_EnumClass")
 include(":M03_Advance:C02_Features")
 include(":M03_Advance:C03_Concurrent")
 

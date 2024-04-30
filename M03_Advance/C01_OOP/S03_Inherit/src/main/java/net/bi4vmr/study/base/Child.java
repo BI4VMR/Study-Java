@@ -1,4 +1,4 @@
-package net.bi4vmr.study.polymorphism;
+package net.bi4vmr.study.base;
 
 /**
  * Name        : Child

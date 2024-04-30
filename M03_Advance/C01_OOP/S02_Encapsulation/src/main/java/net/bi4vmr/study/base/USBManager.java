@@ -1,4 +1,4 @@
-package net.bi4vmr.study.encapsulation;
+package net.bi4vmr.study.base;
 
 /**
  * Name        : USBManager

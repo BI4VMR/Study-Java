@@ -1,4 +1,4 @@
-package net.bi4vmr.study.enumclass;
+package net.bi4vmr.study.base;
 
 /**
  * Name        : Season

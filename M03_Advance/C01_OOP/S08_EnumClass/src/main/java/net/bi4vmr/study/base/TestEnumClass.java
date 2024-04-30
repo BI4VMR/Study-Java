@@ -1,17 +1,11 @@
-package net.bi4vmr.study.enumclass;
+package net.bi4vmr.study.base;
 
 /**
- * Name        : TestEnum
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-12-10 14:15
- * <p>
- * Description : 测试类：枚举类。
+ * 测试类 - 枚举类。
+ *
+ * @author BI4VMR
  */
-public class TestEnum {
+public class TestEnumClass {
 
     public static void main(String[] args) {
         example04();

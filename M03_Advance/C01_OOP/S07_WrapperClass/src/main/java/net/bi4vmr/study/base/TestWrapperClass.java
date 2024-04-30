@@ -1,15 +1,9 @@
-package net.bi4vmr.study.wrapperclass;
+package net.bi4vmr.study.base;
 
 /**
- * Name        : TestWrapperClass
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-12-10 14:15
- * <p>
- * Description : 测试类：包装类。
+ * 测试类 - 包装类。
+ *
+ * @author BI4VMR
  */
 public class TestWrapperClass {
 
