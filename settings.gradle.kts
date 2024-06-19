@@ -82,7 +82,7 @@ include(":M03_Advance:C01_OOP:S05_Interface")
 include(":M03_Advance:C01_OOP:S06_WrapperClass")
 include(":M03_Advance:C01_OOP:S07_EnumClass")
 include(":M03_Advance:C02_Features")
-include(":M03_Advance:C03_Concurrent")
+include(":M03_Advance:C03_Parallelism:S01_Thread")
 
 /* ----- 实用工具 ----- */
 include(":M04_Utils")
