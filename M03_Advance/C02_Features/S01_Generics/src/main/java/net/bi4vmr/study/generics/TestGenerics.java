@@ -1,14 +1,16 @@
-package net.bi4vmr.study.base;
+package net.bi4vmr.study.generics;
+
+import java.lang.reflect.Field;
 
 /**
  * 测试代码：泛型。
  *
  * @author BI4VMR
  */
-public class TestBase {
+public class TestGenerics {
 
     public static void main(String[] args) {
-        example02();
+        example03();
     }
 
     /*
@@ -33,7 +35,7 @@ public class TestBase {
         // 比较Y轴的数据时也需要判断类型，此处省略相关代码。
 
         // 创建实例时随便传入非法数据也不会出错，只在读取数据时才能发现错误。
-        Location1 i2 = new Location1(TestBase.class, Thread.currentThread());
+        Location1 i2 = new Location1(TestGenerics.class, Thread.currentThread());
     }
 
     /*
@@ -51,5 +53,20 @@ public class TestBase {
 
         // 构造方法参数与声明实例时的泛型类型不一致，编译时将会报错。
         // Location2<Integer, Double> i2 = new Location2<>(TestBase.class, Thread.currentThread());
+    }
+
+    /*
+     * 示例：类型擦除。
+     */
+    static void example03() {
+        // 创建实例并指定类型
+        Location2<Integer, Double> location = new Location2<>(100, 25.1082);
+        // 尝试获取变量的类型
+        Field[] fields = location.getClass().getDeclaredFields();
+        for (Field f : fields) {
+            System.out.println("变量名称：" + f.getName());
+            System.out.println("变量类型：" + f.getType());
+        }
+        System.out.println("变量类型：" + fields[0].getGenericType());
     }
 }

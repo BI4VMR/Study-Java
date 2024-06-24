@@ -1,4 +1,4 @@
-package net.bi4vmr.study.base;
+package net.bi4vmr.study.generics;
 
 /**
  * 坐标类（未使用泛型）。
