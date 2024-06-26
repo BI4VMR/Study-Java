@@ -1,3 +1,5 @@
+package net.bi4vmr.test.file;
+
 /**
  * TODO 添加简述。
  * <p>
@@ -87,11 +89,6 @@ public enum FileType {
      * WordPerfect.
      */
     WPD("FF575043"),
-
-    /**
-     * Postscript.
-     */
-    EPS("252150532D41646F6265"),
 
     /**
      * Adobe Acrobat.

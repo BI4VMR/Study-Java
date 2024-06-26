@@ -1,8 +1,10 @@
+package net.bi4vmr.test.file;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class HelloWorld {
+public class FileUtil {
 
     public static void main(String[] args) throws IOException {
         FileType fileType = getFileType("/home/bi4vmr/Picture/测试图片/P01.jpg");
