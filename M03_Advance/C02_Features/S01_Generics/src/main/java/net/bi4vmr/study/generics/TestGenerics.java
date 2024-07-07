@@ -1,6 +1,8 @@
 package net.bi4vmr.study.generics;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * 测试代码：泛型。
@@ -10,7 +12,7 @@ import java.lang.reflect.Field;
 public class TestGenerics {
 
     public static void main(String[] args) {
-        example03();
+        example05();
     }
 
     /*
@@ -55,10 +57,20 @@ public class TestGenerics {
         // Location2<Integer, Double> l2 = new Location2<>(TestBase.class, Thread.currentThread());
     }
 
-    /*
-     * 示例：类型擦除。
+    /**
+     * 示例：泛型方法。
      */
     static void example03() {
+        Integer[] array = {1, 2, 3, 4, 5};
+        // 使用泛型方法
+        List<Integer> list = Location3.arrayToList(array);
+        System.out.println(list);
+    }
+
+    /**
+     * 示例：类型擦除。
+     */
+    static void example04() {
         // 创建实例并指定类型
         Location2<Integer, Double> location = new Location2<>(100, 25.1082);
         // 尝试获取变量的类型
@@ -68,5 +80,41 @@ public class TestGenerics {
             System.out.println("变量类型：" + f.getType());
         }
         System.out.println("变量类型：" + fields[0].getGenericType());
+    }
+
+    /**
+     * 获取文本。
+     *
+     * @param num 数字。
+     */
+    private static <T extends Number & Serializable> String getText(T num) {
+        // 调用Number类中的方法
+        double d = num.doubleValue();
+        return Double.toString(d);
+    }
+
+    /**
+     * 示例：上下界。
+     */
+    static void example05() {
+        Integer integer = 100;
+        // 泛型参数类型为Integer，没有错误。
+        String text = getText(integer);
+        System.out.println(text);
+
+        // 泛型参数类型为String，编译时将会报错。
+        // String text1 = getText("TEXT");
+    }
+
+    /**
+     * 示例：上下界。
+     */
+    static void example06() {
+        Integer integer = 100;
+        String text = getText(integer);
+        System.out.println(text);
+
+        // 泛型参数类型为String，编译时将会报错。
+        // String text1 = getText("TEXT");
     }
 }
