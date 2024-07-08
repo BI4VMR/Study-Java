@@ -3,16 +3,30 @@ pluginManagement {
     // 声明Gradle插件仓库
     repositories {
         // 添加本地私有仓库与代理镜像，无法直连时应当禁用该配置。
-        val hostInfo = java.net.InetAddress.getLocalHost().toString()
-        println("Current host info is $hostInfo")
-        if (hostInfo.startsWith("BI4VMR") && hostInfo.contains("172.18.")) {
-            println("Current host is in private network, add private repository.")
+        val hostName: String = java.net.InetAddress.getLocalHost().hostName
+        println("Current host info is [$hostName]")
+        var isInPrivateLAN = false
+        run {
+            java.net.NetworkInterface.getNetworkInterfaces().toList().forEach {
+                it.inetAddresses.toList().forEach { addr ->
+                    if ((addr is java.net.Inet4Address) && (addr.hostAddress.startsWith("172.18."))) {
+                        isInPrivateLAN = true
+                        return@run
+                    }
+                }
+            }
+        }
+        println("Current host in private LAN? [$isInPrivateLAN]")
+
+        if (hostName.startsWith("BI4VMR") && isInPrivateLAN) {
+            println("Current host is in private network, add private repositorys.")
             maven {
                 isAllowInsecureProtocol = true
                 setUrl("http://172.18.5.1:8081/repository/maven-union/")
             }
         } else {
-            println("Current host not in private network.")
+            println("Current host not in private network, add local repository.")
+            mavenLocal()
         }
 
         // 腾讯云仓库镜像：Maven中心仓库
@@ -32,12 +46,30 @@ dependencyResolutionManagement {
     // 声明Maven组件仓库
     repositories {
         // 添加本地私有仓库与代理镜像，无法直连时应当禁用该配置。
-        val hostInfo = java.net.InetAddress.getLocalHost().toString()
-        if (hostInfo.startsWith("BI4VMR") && hostInfo.contains("172.18.")) {
+        val hostName: String = java.net.InetAddress.getLocalHost().hostName
+        println("Current host info is [$hostName]")
+        var isInPrivateLAN = false
+        run {
+            java.net.NetworkInterface.getNetworkInterfaces().toList().forEach {
+                it.inetAddresses.toList().forEach { addr ->
+                    if ((addr is java.net.Inet4Address) && (addr.hostAddress.startsWith("172.18."))) {
+                        isInPrivateLAN = true
+                        return@run
+                    }
+                }
+            }
+        }
+        println("Current host in private LAN? [$isInPrivateLAN]")
+
+        if (hostName.startsWith("BI4VMR") && isInPrivateLAN) {
+            println("Current host is in private network, add private repositorys.")
             maven {
                 isAllowInsecureProtocol = true
                 setUrl("http://172.18.5.1:8081/repository/maven-union/")
             }
+        } else {
+            println("Current host not in private network, add local repository.")
+            mavenLocal()
         }
 
         // 腾讯云仓库镜像：Maven中心仓库

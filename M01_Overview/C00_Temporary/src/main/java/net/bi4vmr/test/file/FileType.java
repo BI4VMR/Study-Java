@@ -1,14 +1,12 @@
 package net.bi4vmr.test.file;
 
 /**
- * TODO 添加简述。
+ * TODO
  * <p>
- * TODO 添加详情。
+ *
  *
  * @author BI4VMR
  */
-//文件的字节码头
-
 public enum FileType {
     /**
      * JEPG.
@@ -167,25 +165,13 @@ public enum FileType {
         return header;
     }
 
-    // 静态方法：根据序号获取枚举常量
-
-    /**
-     * 根据文件头获取文件类型。
-     *
-     * @param header 文件头。
-     * @return 文件类型。
-     */
     public static FileType parseHeader(String header) {
         FileType[] items = values();
-        // 遍历所有常量
         for (FileType item : items) {
-            // 如果某个常量的序号与传入参数相同，则返回该常量并终止循环。
             if (item.header.equals(header)) {
                 return item;
             }
         }
-
-        // 如果传入参数未匹配到任何常量，则返回空值。
         return null;
     }
 }
