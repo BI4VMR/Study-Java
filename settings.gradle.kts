@@ -25,8 +25,7 @@ pluginManagement {
                 setUrl("http://172.18.5.1:8081/repository/maven-union/")
             }
         } else {
-            println("Current host not in private network, add local repository.")
-            mavenLocal()
+            println("Current host not in private network.")
         }
 
         // 腾讯云仓库镜像：Maven中心仓库
@@ -36,6 +35,8 @@ pluginManagement {
 
         mavenCentral()
         gradlePluginPortal()
+
+        mavenLocal()
     }
 }
 
@@ -68,14 +69,15 @@ dependencyResolutionManagement {
                 setUrl("http://172.18.5.1:8081/repository/maven-union/")
             }
         } else {
-            println("Current host not in private network, add local repository.")
-            mavenLocal()
+            println("Current host not in private network.")
         }
 
         // 腾讯云仓库镜像：Maven中心仓库
         maven { setUrl("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/") }
 
         mavenCentral()
+
+        mavenLocal()
     }
 
     // 版本管理配置
