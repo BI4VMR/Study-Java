@@ -12,7 +12,7 @@ public class TestVariable {
     }
 
     /*
-     * 变量
+     * 示例：变量
      */
     static void example01() {
         // 声明变量“姓名”
@@ -20,6 +20,7 @@ public class TestVariable {
         // 声明变量“年龄”
         int age = 20;
 
+        // 使用变量：将变量的值输出到控制台
         System.out.print(name);
         System.out.print(age);
     }
