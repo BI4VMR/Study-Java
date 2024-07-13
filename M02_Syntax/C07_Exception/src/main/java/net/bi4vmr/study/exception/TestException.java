@@ -1,24 +1,18 @@
-package net.bi4vmr.study;
+package net.bi4vmr.study.exception;
 
 /**
- * Name        : ExceptionDemo
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@qq.com
- * <p>
- * Date        : 2022-11-24 22:51
- * <p>
- * Description : 异常的捕获与处理示例。
+ * 测试代码 - 异常。
+ *
+ * @author bi4vmr@outlook.com
  */
 public class TestException {
 
     public static void main(String[] args) {
-        example07();
+        example04();
     }
 
-    /*
-     * 示例：异常的捕获与处理
+    /**
+     * 示例：捕获并处理异常 - 基本应用。
      */
     static void example01() {
         try {
@@ -32,8 +26,8 @@ public class TestException {
         System.out.println("整个程序已结束！");
     }
 
-    /*
-     * 示例：获取异常的详细信息
+    /**
+     * 示例：捕获并处理异常 - 获取详细信息。
      */
     static void example02() {
         try {
@@ -43,8 +37,8 @@ public class TestException {
         }
     }
 
-    /*
-     * 示例：捕获多种类型的异常
+    /**
+     * 示例：捕获并处理异常 - 捕获多种类型的异常。
      */
     static void example03() {
         try {
@@ -57,8 +51,8 @@ public class TestException {
         }
     }
 
-    /*
-     * 示例：异常处理中的返回语句
+    /**
+     * 示例：捕获并处理异常 - 异常与"return"语句。
      */
     static void example04() {
         String result = returnInTryCatch();

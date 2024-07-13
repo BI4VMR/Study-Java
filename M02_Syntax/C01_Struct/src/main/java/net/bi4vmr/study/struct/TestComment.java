@@ -1,11 +1,11 @@
-package net.bi4vmr.study;
+package net.bi4vmr.study.struct;
 
 import java.math.BigDecimal;
 
 /**
- * 测试类 - Java文档注释
+ * 测试代码 - Java文档注释。
  *
- * @author BI4VMR
+ * @author bi4vmr@outlook.com
  * @version 1.0
  */
 public class TestComment {

@@ -1,15 +1,9 @@
-package net.bi4vmr.study.base.ch02;
+package net.bi4vmr.study.operator;
 
 /**
- * Name        : OperatorDemo
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@qq.com
- * <p>
- * Date        : 2022-11-27 13:55
- * <p>
- * Description : 运算符示例。
+ * 测试代码 - 运算符。
+ *
+ * @author bi4vmr@outlook.com
  */
 public class TestOperator {
 
@@ -17,6 +11,9 @@ public class TestOperator {
         example08();
     }
 
+    /**
+     * 示例：四则运算。
+     */
     static void example01() {
         int a = 5 + 12;
         int b = 25 - 10;
@@ -33,6 +30,9 @@ public class TestOperator {
         System.out.println("24.0 % 7 = " + f);
     }
 
+    /**
+     * 示例：自增与自减运算。
+     */
     static void example02() {
         int a = 5;
         int b = 5;
@@ -42,6 +42,9 @@ public class TestOperator {
         System.out.println("a = " + a + " ;b = " + b);
     }
 
+    /**
+     * 示例：自增与自减运算。
+     */
     static void example03() {
         int a = 5;
         int b = a;
@@ -80,14 +83,14 @@ public class TestOperator {
     }
 
     static void example06() {
-        int a = 0x25;		// 25H	-> 0010 0101B
-        int b = 0xCE;		// CEH	-> 1100 1110B
-        int m = a & b;	    // 4D	-> 0000 0100B
-        int n = a | b;	    // 239D	-> 1110 1111B
-        int o = ~a;		    // -38D	-> 1101 1010B
-        int p = a ^ b;	    // 235D	-> 1110 1011B
-        int x = a << 2;	    // 148D	-> 1001 0100B
-        int y = a >> 2;	    // 9D	-> 0000 1001B
+        int a = 0x25;        // 25H	-> 0010 0101B
+        int b = 0xCE;        // CEH	-> 1100 1110B
+        int m = a & b;        // 4D	-> 0000 0100B
+        int n = a | b;        // 239D	-> 1110 1111B
+        int o = ~a;            // -38D	-> 1101 1010B
+        int p = a ^ b;        // 235D	-> 1110 1011B
+        int x = a << 2;        // 148D	-> 1001 0100B
+        int y = a >> 2;        // 9D	-> 0000 1001B
 
         System.out.println("a    = " + a);
         System.out.println("b    = " + b);
@@ -99,6 +102,9 @@ public class TestOperator {
         System.out.println("a>>2 = " + y);
     }
 
+    /**
+     * 示例：条件运算符。
+     */
     static void example07() {
         int a = 1;
         int b = 2;
@@ -107,6 +113,9 @@ public class TestOperator {
         System.out.println("c = " + c);
     }
 
+    /**
+     * 示例：条件运算符。
+     */
     static void example08() {
         int a = 1;
         int b = 2;
