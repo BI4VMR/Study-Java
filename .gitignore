@@ -10,7 +10,7 @@ desktop.ini
 # ----- 编译工具输出目录 -----
 # Maven
 target/
-/out/
+out/
 # Gradle
 build/
 # CMake
