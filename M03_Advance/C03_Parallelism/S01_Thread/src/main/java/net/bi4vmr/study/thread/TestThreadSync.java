@@ -1,4 +1,4 @@
-package net.bi4vmr.study.concurrent;
+package net.bi4vmr.study.thread;
 
 /**
  * Name        : TestThreadSync

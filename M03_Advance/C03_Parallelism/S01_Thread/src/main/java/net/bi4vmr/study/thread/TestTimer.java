@@ -1,4 +1,4 @@
-package net.bi4vmr.study.concurrent;
+package net.bi4vmr.study.thread;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
