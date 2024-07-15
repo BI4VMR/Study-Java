@@ -1,40 +1,37 @@
-package net.bi4vmr.study.thread;
+package net.bi4vmr.study.timer;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Name        : TestTimer
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-09-25 22:28
- * <p>
- * Description : 测试类 - Timer。
+ * 测试代码 - Timer。
+ *
+ * @author bi4vmr@outlook.com
  */
 public class TestTimer {
 
     public static void main(String[] args) {
-        example04();
+        example01();
     }
 
-    /*
-     * Timer的基本应用
+    /**
+     * 示例：基本应用。
      */
     static void example01() {
+        // 创建任务
         TimerTask timerTask = new TimerTask() {
+
             @Override
             public void run() {
-                System.out.println("Exec Time: " + LocalDateTime.now());
+                System.out.println("Task Executed. Time:[" + getTime() + "]");
             }
         };
 
-        // 创建Timer实例
+        // 创建Timer对象
         Timer timer = new Timer();
 
         // 以当前时刻为参考点，在1000毫秒之后执行任务TimerTask。
@@ -138,5 +135,15 @@ public class TestTimer {
         Timer timer = new Timer();
         timer.cancel();
         timer.scheduleAtFixedRate(timerTask, date, 1000L);
+    }
+
+    /**
+     * 获取当前时间。
+     *
+     * @return 时间字符串（HH:mm:ss.SSS）。
+     */
+    private static String getTime() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
+        return LocalTime.now().format(dateFormatter);
     }
 }
