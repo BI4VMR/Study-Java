@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 public class TestThread {
 
     public static void main(String[] args) {
-        example04();
+        example06();
     }
 
     /**
@@ -113,25 +113,22 @@ public class TestThread {
     //     }
     // }
 
-    /*
-     * 线程的调度：中断
+    /**
+     * 示例：中断任务 - 中断未阻塞的任务。
      */
     static void example05() {
-        // 定义子线程
         Thread subThread = new Thread(() -> {
+            // 模拟需要反复执行的任务
             for (int i = 1; i <= 1000; i++) {
-                // 每次循环前判断中断信号
+                // 每轮循环开始前，先判断当前任务是否已被取消。
                 if (Thread.currentThread().isInterrupted()) {
-                    /* 已收到中断信号 */
                     System.out.println("SubThread has been interrupted!");
-                    // 清理资源，此处未使用任何资源，故而省略。
                     // 退出"run()"方法，结束当前任务。
                     return;
-                } else {
-                    /* 未收到中断信号 */
-                    // 继续执行任务
-                    System.out.println("Print some messages in subthread, index:" + i);
                 }
+
+                // 继续执行任务
+                System.out.println("Subthread is running. Index:[" + i + "]");
             }
         });
 
@@ -139,27 +136,29 @@ public class TestThread {
             // 启动子线程
             subThread.start();
 
-            // 主线程休眠1毫秒后发出中断信号
-            Thread.sleep(1L);
-
+            // 主线程休眠10毫秒，让子线程运行一会儿。
+            Thread.sleep(10L);
             // 向子线程发出中断信号
             subThread.interrupt();
+            System.out.println("Send interrupt signal in Main Thread.");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    /*
-     * 线程的调度：处理中断异常
+    /**
+     * 示例：中断任务 - 中断已阻塞的任务。
      */
     static void example06() {
         Thread subThread = new Thread(() -> {
             try {
-                // 子线程开始运行后立即进入休眠状态
-                Thread.sleep(10000L);
+                System.out.println("SubThread start.");
+                // 进入休眠状态
+                Thread.sleep(1000L);
+                System.out.println("SubThread end.");
             } catch (InterruptedException e) {
                 /* 捕获中断异常 */
-                System.out.println("SubThread is waiting and interrupted.");
+                System.out.println("SubThread is waiting and be interrupted.");
             } finally {
                 /* 清理资源 */
                 System.out.println("SubThread clean.");
