@@ -1,20 +1,14 @@
 package net.bi4vmr.study.sync;
 
 /**
- * Name        : TestThreadSync
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-09-24 12:56
- * <p>
- * Description : 测试类 - 线程间的同步。
+ * 测试代码 - 数据同步。
+ *
+ * @author bi4vmr@outlook.com
  */
 public class TestThreadSync {
 
     public static void main(String[] args) {
-        example03();
+        example01();
     }
 
     /*

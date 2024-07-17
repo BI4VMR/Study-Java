@@ -14,7 +14,7 @@ package net.bi4vmr.study.sync;
 public class BuyThread extends Thread {
 
     // 静态全局变量，表示商品的剩余数量，初始为10件。
-    static int count = 10;
+    static int count = 100;
 
     @Override
     public void run() {
