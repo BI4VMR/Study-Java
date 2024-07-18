@@ -13,7 +13,7 @@ import java.util.concurrent.FutureTask;
 public class TestCooperation {
 
     public static void main(String[] args) {
-        example02();
+        example05();
     }
 
     static void task(String name, long time) {
@@ -57,27 +57,90 @@ public class TestCooperation {
     }
 
     /**
-     * 示例：基本应用 - 继承Thread类。
+     * 示例：等待其他任务完成。
      */
-    static void example0111() {
+    static void example03() {
+        System.out.println("Task root start.");
+        // 定义线程A并启动它
+        Thread threadA = new Thread(() -> {
+            task("A", 2000L);
+        });
+        threadA.start();
+
+        try {
+            // 在当前线程中调用线程A的"join()"方法，等待线程A结束再继续运行。
+            threadA.join();
+            System.out.println("Task root end.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 示例：获取其他任务的结果。
+     */
+    static void example04() {
+        System.out.println("Task Root start.");
+        // 定义FutureTask
         FutureTask<Integer> task = new FutureTask<Integer>(new Callable() {
             @Override
             public Integer call() throws Exception {
-                // 当前线程休眠2秒，模拟耗时操作。
-                Thread.sleep(2000L);
-                String name = Thread.currentThread().getName();
-                System.out.println("Thread:[" + name + "]");
-                return 100;
+                task("A", 2000);
+                return 114514;
             }
         });
-
-        Thread thread = new Thread(task);
-        thread.start();
+        // 通过FutureTask创建线程
+        Thread threadA = new Thread(task);
         // 启动线程，开始执行任务。
+        threadA.start();
+
         try {
+            // 异步等待任务结束，并接收返回值。
             int result = task.get();
-            System.out.println("Get result " + result);
-            System.out.println("Thread main end.");
+            System.out.println("Task Root end, task A result is " + result + ".");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 定义MyTask类，以便创建多个Task对象。
+     */
+    static class MyTask implements Callable<Integer> {
+
+        private final String name;
+
+        public MyTask(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public Integer call() {
+            task(name, 2000);
+            return 114514;
+        }
+    }
+
+    /**
+     * 示例：合并多个任务的结果。
+     */
+    static void example05() {
+        // 创建两个FutureTask实例
+        FutureTask<Integer> taskA = new FutureTask<>(new MyTask("A"));
+        FutureTask<Integer> taskB = new FutureTask<>(new MyTask("B"));
+
+        // 创建两个线程，分别关联上述的两个FutureTask实例。
+        Thread threadA = new Thread(taskA);
+        Thread threadB = new Thread(taskB);
+
+        // 启动线程，开始执行任务。
+        threadA.start();
+        threadB.start();
+
+        try {
+            // 异步等待任务结束，并接收返回值。
+            int result = taskA.get() + taskB.get();
+            System.out.println("All task is end, summary is " + result + ".");
         } catch (Exception e) {
             e.printStackTrace();
         }

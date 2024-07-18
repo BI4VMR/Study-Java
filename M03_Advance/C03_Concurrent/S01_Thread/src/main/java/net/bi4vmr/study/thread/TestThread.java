@@ -92,27 +92,6 @@ public class TestThread {
         thread.start();
     }
 
-    // /*
-    //  * 线程的调度：插队
-    //  */
-    // static void example04() {
-    //     MyThread subThread = new MyThread();
-    //     // 启动子线程
-    //     subThread.start();
-    //
-    //     try {
-    //         // 使子线程插队至主线程前执行。
-    //         subThread.join();
-    //     } catch (InterruptedException e) {
-    //         throw new RuntimeException(e);
-    //     }
-    //
-    //     // 此处放置线程需要执行的操作，本示例将向控制台输出消息。
-    //     for (int i = 0; i <= 100; i++) {
-    //         System.out.println("Print some messages in thread:Main, index:" + i);
-    //     }
-    // }
-
     /**
      * 示例：中断任务 - 中断未阻塞的任务。
      */
