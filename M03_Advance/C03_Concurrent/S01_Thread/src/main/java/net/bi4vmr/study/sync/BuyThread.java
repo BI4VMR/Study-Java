@@ -1,20 +1,14 @@
 package net.bi4vmr.study.sync;
 
 /**
- * Name        : BuyThread
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-09-24 13:52
- * <p>
- * Description : 线程：购买商品（未同步）。
+ * 测试代码 - 线程：购买商品（未同步）。
+ *
+ * @author bi4vmr@outlook.com
  */
 public class BuyThread extends Thread {
 
     // 静态全局变量，表示商品的剩余数量，初始为10件。
-    static int count = 100;
+    static int count = 10;
 
     @Override
     public void run() {

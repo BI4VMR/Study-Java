@@ -8,11 +8,11 @@ package net.bi4vmr.study.sync;
 public class TestThreadSync {
 
     public static void main(String[] args) {
-        example01();
+        example04();
     }
 
-    /*
-     * 竞态条件
+    /**
+     * 示例：竞态条件。
      */
     static void example01() {
         // 定义三个线程，模拟三个客户，它们的任务都是循环购买商品。
@@ -29,8 +29,8 @@ public class TestThreadSync {
         thread3.start();
     }
 
-    /*
-     * 同步代码块
+    /**
+     * 示例：同步代码块。
      */
     static void example02() {
         // 定义三个线程，模拟三个客户，它们的任务都是循环购买商品。
@@ -63,5 +63,36 @@ public class TestThreadSync {
         thread1.start();
         thread2.start();
         thread3.start();
+    }
+
+    /*
+     * 同步方法
+     */
+    static void example04() {
+
+        Thread thread1 = new Thread(new Runnable(){
+            @Override
+            public synchronized void run() {
+                try {
+                    Thread.sleep(3000L);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                this.notify();
+            }
+        });
+        thread1.setName("客户1");
+
+        synchronized (thread1){
+            // 定义三个线程，模拟三个客户，它们的任务都是循环购买商品。
+            thread1.start();
+
+            try {
+                thread1.wait();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
