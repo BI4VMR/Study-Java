@@ -8,7 +8,7 @@ package net.bi4vmr.study.sync;
 public class TestThreadSync {
 
     public static void main(String[] args) {
-        example04();
+        example01();
     }
 
     /**
@@ -17,11 +17,11 @@ public class TestThreadSync {
     static void example01() {
         // 定义三个线程，模拟三个客户，它们的任务都是循环购买商品。
         Thread thread1 = new BuyThread();
-        thread1.setName("客户1");
+        thread1.setName("客户A");
         Thread thread2 = new BuyThread();
-        thread2.setName("客户2");
+        thread2.setName("客户B");
         Thread thread3 = new BuyThread();
-        thread3.setName("客户3");
+        thread3.setName("客户C");
 
         // 依次开启三个任务，模拟三个客户的购买行为。
         thread1.start();
@@ -35,11 +35,11 @@ public class TestThreadSync {
     static void example02() {
         // 定义三个线程，模拟三个客户，它们的任务都是循环购买商品。
         Thread thread1 = new BuyThread2();
-        thread1.setName("客户1");
+        thread1.setName("客户A");
         Thread thread2 = new BuyThread2();
-        thread2.setName("客户2");
+        thread2.setName("客户B");
         Thread thread3 = new BuyThread2();
-        thread3.setName("客户3");
+        thread3.setName("客户C");
 
         // 依次开启三个任务，模拟三个客户的购买行为。
         thread1.start();
@@ -47,17 +47,17 @@ public class TestThreadSync {
         thread3.start();
     }
 
-    /*
-     * 同步方法
+    /**
+     * 示例：同步方法。
      */
     static void example03() {
         // 定义三个线程，模拟三个客户，它们的任务都是循环购买商品。
         Thread thread1 = new BuyThread3();
-        thread1.setName("客户1");
+        thread1.setName("客户A");
         Thread thread2 = new BuyThread3();
-        thread2.setName("客户2");
+        thread2.setName("客户B");
         Thread thread3 = new BuyThread3();
-        thread3.setName("客户3");
+        thread3.setName("客户C");
 
         // 依次开启三个任务，模拟三个客户的购买行为。
         thread1.start();
@@ -65,12 +65,12 @@ public class TestThreadSync {
         thread3.start();
     }
 
-    /*
-     * 同步方法
+    /**
+     * 示例：等待与唤醒。
      */
     static void example04() {
 
-        Thread thread1 = new Thread(new Runnable(){
+        Thread thread1 = new Thread(new Runnable() {
             @Override
             public synchronized void run() {
                 try {
@@ -83,7 +83,7 @@ public class TestThreadSync {
         });
         thread1.setName("客户1");
 
-        synchronized (thread1){
+        synchronized (thread1) {
             // 定义三个线程，模拟三个客户，它们的任务都是循环购买商品。
             thread1.start();
 
