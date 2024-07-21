@@ -31,7 +31,7 @@ public class TestOperator {
     }
 
     /**
-     * 示例：自增与自减运算。
+     * 示例：自增与自减运算符。
      */
     static void example02() {
         int a = 5;
@@ -43,7 +43,7 @@ public class TestOperator {
     }
 
     /**
-     * 示例：自增与自减运算。
+     * 示例：赋值运算符。
      */
     static void example03() {
         int a = 5;
@@ -58,6 +58,9 @@ public class TestOperator {
         System.out.println("b:" + b);
     }
 
+    /**
+     * 示例：比较运算符。
+     */
     static void example04() {
         int a = 5;
         int b = 1;
@@ -72,6 +75,9 @@ public class TestOperator {
         System.out.println("s1内容是否与s3相同：" + (s1 == s3));
     }
 
+    /**
+     * 示例：逻辑运算符 - 普通运算与短路运算的区别。
+     */
     static void example05() {
         int a = 5;
 
@@ -82,6 +88,9 @@ public class TestOperator {
         System.out.println("a = " + a);
     }
 
+    /**
+     * 示例：位运算符。
+     */
     static void example06() {
         int a = 0x25;        // 25H	-> 0010 0101B
         int b = 0xCE;        // CEH	-> 1100 1110B
