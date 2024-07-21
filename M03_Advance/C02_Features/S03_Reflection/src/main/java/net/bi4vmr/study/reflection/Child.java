@@ -1,5 +1,10 @@
 package net.bi4vmr.study.reflection;
 
+/**
+ * 测试类 - 子类。
+ *
+ * @author bi4vmr@outlook.com
+ */
 class Child extends Father {
 
     // 公开属性：姓名

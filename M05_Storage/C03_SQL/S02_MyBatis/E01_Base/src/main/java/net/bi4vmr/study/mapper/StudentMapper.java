@@ -1,4 +1,4 @@
-package net.bi4vmr.study.storage.mybatis.base.mapper;
+package net.bi4vmr.study.mapper;
 
 /**
  * Name        : StudentMapper

@@ -1,9 +1,9 @@
 package net.bi4vmr.study.reflection;
 
 /**
- * 类的示例 - 人类。
+ * 测试类 - 父类。
  *
- * @author BI4VMR
+ * @author bi4vmr@outlook.com
  */
 public class Father {
 

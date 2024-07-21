@@ -1,25 +1,18 @@
-package net.bi4vmr.study.storage.mybatis.base;
+package net.bi4vmr.study;
 
-import net.bi4vmr.study.storage.mybatis.base.mapper.StudentMapper;
+import net.bi4vmr.study.mapper.StudentMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Name        : TestBase
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-10-18 23:26
- * <p>
- * Description : 测试类：基本应用。
+ * 测试代码 - 基本应用。
+ *
+ * @author bi4vmr@outlook.com
  */
 public class TestBase {
 
