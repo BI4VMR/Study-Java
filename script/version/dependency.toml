@@ -1,8 +1,18 @@
 # 版本号
 [versions]
-# ----- Java：通用 -----
+# ----- Java：通用工具 -----
 java_gson = "2.10.1"
-junit_jupiter = "5.10.2"
+java_slf4j_simple = "2.0.9"
+
+
+# ----- Java：数据存储 -----
+java_jdbc_sqlite = "3.46.0.0"
+java_jdbc_mariadb = "3.2.0"
+java_mybatis = "3.5.16"
+
+
+# ----- Java：测试工具 -----
+java_junit_jupiter = "5.10.2"
 
 
 # ----- Kotlin：核心 -----
@@ -46,12 +56,27 @@ android_room = "2.5.1"
 
 # 组件
 [libraries]
-# ----- Java：通用 -----
+# ----- Java：通用工具 -----
 # GSON
 java_gson = { group = "com.google.code.gson", name = "gson", version.ref = "java_gson" }
 
+# SLF4J-Simple
+java_slf4j = { group = "org.slf4j", name = "slf4j-simple", version.ref = "java_slf4j_simple" }
+
+
+# ----- Java：数据存储 -----
+# JDBC驱动(SQLite)
+java_jdbc_sqlite = { group = "org.xerial", name = "sqlite-jdbc", version.ref = "java_jdbc_sqlite" }
+# JDBC驱动(MariaDB)
+java_jdbc_mariadb = { group = "org.mariadb.jdbc", name = "mariadb-java-client", version.ref = "java_jdbc_mariadb" }
+
+# MyBatis
+java_mybatis = { group = "org.mybatis", name = "mybatis", version.ref = "java_mybatis" }
+
+
+# ----- Java：测试工具 -----
 # JUnit-Jupiter
-java_junit_jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit_jupiter" }
+java_junit_jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "java_junit_jupiter" }
 
 
 # ----- Kotlin：核心 -----

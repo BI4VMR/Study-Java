@@ -1,18 +1,15 @@
 package net.bi4vmr.study.mapper;
 
 /**
- * Name        : StudentMapper
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-10-18 23:35
- * <p>
- * Description : 学生实体管理接口。
+ * Mapper接口 - 学生信息。
+ *
+ * @author bi4vmr@outlook.com
  */
 public interface StudentMapper {
 
-    // 插入记录的方法
+    // 创建数据库
+    void createTable();
+
+    // 插入记录
     int insertStudent();
 }

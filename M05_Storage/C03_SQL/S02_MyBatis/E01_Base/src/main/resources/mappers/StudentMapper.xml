@@ -6,6 +6,15 @@
 <mapper namespace="net.bi4vmr.study.mapper.StudentMapper">
 
     <!-- 通过"id"属性指明Java接口中的方法名称 -->
+    <update id="createTable">
+        CREATE TABLE IF NOT EXISTS student
+        (
+        student_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        student_name CHAR(32),
+        sex CHAR(1)
+        );
+    </update>
+
     <insert id="insertStudent">
         INSERT INTO student VALUES(null, 'Test', '男');
     </insert>

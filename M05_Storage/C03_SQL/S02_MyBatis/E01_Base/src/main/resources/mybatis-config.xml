@@ -10,10 +10,10 @@
             <transactionManager type="JDBC"/>
             <!-- 连接信息（驱动、地址、用户与密码） -->
             <dataSource type="POOLED">
-                <property name="driver" value="org.mariadb.jdbc.Driver"/>
-                <property name="url" value="jdbc:mariadb://172.18.6.2/School"/>
-                <property name="username" value="root"/>
-                <property name="password" value="Qwer1234."/>
+                <property name="driver" value="org.sqlite.JDBC"/>
+                <property name="url" value="jdbc:sqlite:data.db"/>
+                <property name="username" value="用户名称"/>
+                <property name="password" value="认证口令"/>
             </dataSource>
         </environment>
     </environments>

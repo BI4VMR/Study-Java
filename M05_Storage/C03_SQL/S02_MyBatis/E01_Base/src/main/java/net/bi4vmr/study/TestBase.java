@@ -26,7 +26,8 @@ public class TestBase {
         SqlSession session = sessionFactory.openSession(true);
         // 传入StudentMapper接口的Class文件，获取一个实现类。
         StudentMapper mapper = session.getMapper(StudentMapper.class);
-        // 执行接口中的方法
+        // 执行Mapper接口中的方法
+        mapper.createTable();
         mapper.insertStudent();
         mapper.insertStudent();
         mapper.insertStudent();
