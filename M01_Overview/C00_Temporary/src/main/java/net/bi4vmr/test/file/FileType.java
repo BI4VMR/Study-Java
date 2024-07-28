@@ -106,7 +106,7 @@ public enum FileType {
     /**
      * ZIP Archive.
      */
-    ZIP("504B0304"),
+    ZIP("504B03040A"),
 
     /**
      * RAR Archive.

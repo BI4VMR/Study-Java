@@ -19,13 +19,17 @@ pluginManagement {
         println("Current host in private LAN? [$isInPrivateLAN]")
 
         if (hostName.startsWith("BI4VMR") && isInPrivateLAN) {
-            println("Current host is in private network, add private repositorys.")
+            println("Current host is in private network, add LAN repositorys.")
             maven {
                 isAllowInsecureProtocol = true
                 setUrl("http://172.18.5.1:8081/repository/maven-union/")
             }
         } else {
-            println("Current host not in private network.")
+            println("Current host is not in private network, add VPN repositorys.")
+            maven {
+                isAllowInsecureProtocol = true
+                setUrl("http://192.168.128.1:8081/repository/maven-union/")
+            }
         }
 
         // 腾讯云仓库镜像：Maven中心仓库
@@ -36,7 +40,8 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
 
-        mavenLocal()
+        // TestOnly
+        // mavenLocal()
     }
 }
 
@@ -65,6 +70,11 @@ dependencyResolutionManagement {
                 isAllowInsecureProtocol = true
                 setUrl("http://172.18.5.1:8081/repository/maven-union/")
             }
+        } else {
+            maven {
+                isAllowInsecureProtocol = true
+                setUrl("http://192.168.128.1:8081/repository/maven-union/")
+            }
         }
 
         // 腾讯云仓库镜像：Maven中心仓库
@@ -72,7 +82,8 @@ dependencyResolutionManagement {
 
         mavenCentral()
 
-        mavenLocal()
+        // TestOnly
+        // mavenLocal()
     }
 
     // 版本管理配置
@@ -82,6 +93,11 @@ dependencyResolutionManagement {
             // 导入依赖版本配置文件
             from(files("script/version/dependency.toml"))
         }
+
+        // 基础组件库
+        create("baselibs") {
+            from(files("script/version/dependency_baselib.toml"))
+        }
     }
 }
 
@@ -89,11 +105,12 @@ dependencyResolutionManagement {
 // 主工程名称
 rootProject.name = "Study-Java"
 
-/* ----- 基础知识 ----- */
+
+// ----- 基础知识 -----
 include(":M01_Overview:C00_Temporary")
 include(":M01_Overview:C01_HelloWorld")
 
-/* ----- 基本语法 ----- */
+// ----- 基本语法 -----
 include(":M02_Syntax:C01_Struct")
 include(":M02_Syntax:C02_Operator")
 include(":M02_Syntax:C03_Console")
@@ -102,7 +119,7 @@ include(":M02_Syntax:C05_Method")
 include(":M02_Syntax:C06_Array")
 include(":M02_Syntax:C07_Exception")
 
-/* ----- 高级特性 ----- */
+// ----- 高级特性 -----
 include(":M03_Advance:C01_OOP:S01_Base")
 include(":M03_Advance:C01_OOP:S02_Encapsulation")
 include(":M03_Advance:C01_OOP:S03_Inherit")
@@ -119,10 +136,10 @@ include(":M03_Advance:C04_IO")
 include(":M03_Advance:C05_External:S01_Console")
 include(":M03_Advance:C05_External:S02_JNI")
 
-/* ----- 实用工具 ----- */
+// ----- 实用工具 -----
 include(":M04_Utils")
 
-/* ----- 数据存储 ----- */
+// ----- 数据存储 -----
 include(":M05_Storage:C01_File:S01_Base")
 include(":M05_Storage:C01_File:S02_Stream")
 include(":M05_Storage:C03_SQL:S02_MyBatis:E01_Base")
