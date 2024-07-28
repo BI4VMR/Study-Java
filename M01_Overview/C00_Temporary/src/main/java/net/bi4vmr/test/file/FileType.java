@@ -1,38 +1,7 @@
 package net.bi4vmr.test.file;
 
-/**
- * TODO
- * <p>
- *
- *
- * @author BI4VMR
- */
+@Deprecated
 public enum FileType {
-    /**
-     * JEPG.
-     */
-    JPEG("FFD8FF"),
-
-    /**
-     * PNG.
-     */
-    PNG("89504E47"),
-
-    /**
-     * Windows Bitmap.
-     */
-    BMP("424D"),
-
-    /**
-     * GIF.
-     */
-    GIF("47494638"),
-
-    /**
-     * TIFF.
-     */
-    TIFF("49492A00"),
-
     /**
      * CAD.
      */
