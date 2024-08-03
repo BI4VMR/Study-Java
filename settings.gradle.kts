@@ -135,7 +135,7 @@ include(":M03_Advance:C02_Features:S02_Annotation")
 include(":M03_Advance:C02_Features:S03_Reflection")
 include(":M03_Advance:C03_Concurrent:S01_Thread")
 include(":M03_Advance:C03_Concurrent:S02_Tool")
-include(":M03_Advance:C04_IO")
+include(":M03_Advance:C04_IO:S01_Base")
 include(":M03_Advance:C05_External:S01_Console")
 include(":M03_Advance:C05_External:S02_JNI")
 
@@ -144,5 +144,4 @@ include(":M04_Utils")
 
 // ----- 数据存储 -----
 include(":M05_Storage:C01_File:S01_Base")
-include(":M05_Storage:C01_File:S02_Stream")
 include(":M05_Storage:C03_SQL:S02_MyBatis:E01_Base")
