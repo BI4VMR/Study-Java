@@ -123,7 +123,7 @@ public class TestOperator {
     }
 
     /**
-     * 示例：条件运算符。
+     * 示例：条件运算符的等价写法。
      */
     static void example08() {
         int a = 1;

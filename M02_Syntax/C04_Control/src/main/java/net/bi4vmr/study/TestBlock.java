@@ -1,15 +1,9 @@
-package net.bi4vmr.study.base.ch03;
+package net.bi4vmr.study;
 
 /**
- * Name        : BlockDemo
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@qq.com
- * <p>
- * Date        : 2022-09-18 16:08
- * <p>
- * Description : 代码块与作用域示例。
+ * 测试代码 - 代码块与作用域。
+ *
+ * @author bi4vmr@outlook.com
  */
 public class TestBlock {
 
