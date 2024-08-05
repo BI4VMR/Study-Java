@@ -145,3 +145,6 @@ include(":M04_Utils")
 // ----- 数据存储 -----
 include(":M05_Storage:C01_File:S01_Base")
 include(":M05_Storage:C03_SQL:S02_MyBatis:E01_Base")
+
+// ----- 网络通讯 -----
+include(":M06_Network:C01_Base")

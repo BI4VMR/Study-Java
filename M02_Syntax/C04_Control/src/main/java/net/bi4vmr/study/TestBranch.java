@@ -1,15 +1,9 @@
-package net.bi4vmr.study.base.ch03;
+package net.bi4vmr.study;
 
 /**
- * Name        : BranchDemo
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@qq.com
- * <p>
- * Date        : 2022-09-18 16:08
- * <p>
- * Description : 分支结构示例。
+ * 测试代码 - 分支结构。
+ *
+ * @author bi4vmr@outlook.com
  */
 public class TestBranch {
 
@@ -19,6 +13,11 @@ public class TestBranch {
 
     /*
      * 给定两个整数a和b，当a的值比b的值大时，在控制台上输出结果。
+     */
+    /**
+     * 示例：转义字符的基本应用。
+     * <p>
+     * 在本示例中，我们使用转义字符控制输出文本的格式。
      */
     static void example01() {
         int a = 2;
