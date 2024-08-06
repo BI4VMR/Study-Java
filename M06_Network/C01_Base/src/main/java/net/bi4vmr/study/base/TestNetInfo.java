@@ -3,6 +3,7 @@ package net.bi4vmr.study.base;
 import java.net.*;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.List;
 
 /**
  * TODO 添加简述。
@@ -12,7 +13,7 @@ import java.util.Enumeration;
 public class TestNetInfo {
 
     public static void main(String[] args) throws Exception {
-        example02();
+        example03();
     }
 
     /**
@@ -67,6 +68,28 @@ public class TestNetInfo {
                 }
             }
             System.out.println();
+        }
+    }
+
+    /**
+     * 示例：获取接口的网络层地址与前缀长度。
+     * <p>
+     * 在本示例中，我们解析接口的网络层地址与前缀长度。
+     */
+    static void example03() throws Exception {
+        // 获取本机的所有网络接口
+        Enumeration<NetworkInterface> nifs = NetworkInterface.getNetworkInterfaces();
+        while (nifs.hasMoreElements()) {
+            NetworkInterface nif = nifs.nextElement();
+
+            List<InterfaceAddress> addresses = nif.getInterfaceAddresses();
+            for (InterfaceAddress address : addresses) {
+                System.out.println("接口名称：" + nif.getName());
+                System.out.println("网络地址：" + address.getAddress());
+                System.out.println("前缀长度：" + address.getNetworkPrefixLength());
+                System.out.println("广播地址：" + address.getBroadcast());
+                System.out.println();
+            }
         }
     }
 }

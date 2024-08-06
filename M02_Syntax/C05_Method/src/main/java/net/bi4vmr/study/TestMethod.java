@@ -13,11 +13,11 @@ import java.util.TimerTask;
 public class TestMethod {
 
     public static void main(String[] args) {
-        example06();
+        example04();
     }
 
     /**
-     * 计算两数之和。
+     * 定义方法：计算两数之和。
      *
      * @param a 运算数A。
      * @param b 运算数B。
@@ -28,7 +28,9 @@ public class TestMethod {
     }
 
     /**
-     * 示例：方法的参数。
+     * 示例：参数的基本应用。
+     * <p>
+     * 在本示例中，我们定义一个方法，接收两个整型参数，功能是将它们的值累加求和，并将结果输出到控制台上。
      */
     static void example01() {
         int x = 8;
@@ -53,7 +55,9 @@ public class TestMethod {
     }
 
     /**
-     * 示例：方法的参数 - 基本类型与引用类型。
+     * 示例：不同数据类型参数的区别。
+     * <p>
+     * 在本示例中，我们定义一个方法，接收两个整型参数，功能是将它们的值累加求和，并将结果输出到控制台上。
      */
     static void example02() {
         // 基本数据类型
@@ -80,16 +84,46 @@ public class TestMethod {
     }
 
     /**
-     * 示例：方法的参数 - 基本类型与引用类型。
+     * 示例：返回值的基本应用。
+     * <p>
+     * 在本示例中，我们对前文“示例一”中的 `plus()` 方法进行修改，通过返回值汇报计算结果。
      */
     static void example03() {
         int x = 8;
         int y = 6;
 
         // 调用带返回值方法"plus2()"，使用一个变量接收返回值。
-        int sum = plus2(x, y);
+        int summary = plus2(x, y);
         // 将接收到的参数显示在控制台上
-        System.out.println("两数之和：" + sum);
+        System.out.println("两数之和：" + summary);
+    }
+
+    /**
+     * 计算两数之和。
+     *
+     * @param a 运算数A。
+     * @param b 运算数B。
+     * @return 两数之和。
+     */
+    static void compare(int a, int b) {
+        if (a <= b) {
+            // 使用"return"退出方法
+            return;
+        }
+
+        System.out.println("a > b");
+    }
+
+    /**
+     * 示例：返回值的基本应用。
+     * <p>
+     * 在本示例中，我们对前文“示例一”中的 `plus()` 方法进行修改，通过返回值汇报计算结果。
+     */
+    static void example04() {
+        int x = 6;
+        int y = 8;
+
+        compare(x, y);
     }
 
     /**
@@ -108,7 +142,7 @@ public class TestMethod {
     /**
      * 示例：方法的参数 - 基本类型与引用类型。
      */
-    static void example04() {
+    static void example0444() {
         int x = 8;
         int y = 6;
         int z = 10;
