@@ -94,12 +94,12 @@ dependencyResolutionManagement {
         // 声明命名空间"libs"
         create("libs") {
             // 导入依赖版本配置文件
-            from(files("script/version/dependency.toml"))
+            from(files("misc/version/dependency.toml"))
         }
 
         // 基础组件库
         create("baselibs") {
-            from(files("script/version/dependency_baselib.toml"))
+            from(files("misc/version/dependency_baselib.toml"))
         }
     }
 }
