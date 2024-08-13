@@ -45,7 +45,7 @@ public class TestVariable {
      * <p>
      * 在本示例中，我们定义一些变量，并在不同的作用域中访问它们。
      */
-    static void example04() {
+    static void example03() {
         int i = 1;
 
         // 定义一个“块”
