@@ -4,11 +4,11 @@ plugins {
 
 dependencies {
     // JDBC驱动-SQLite
-    implementation(libs.java.jdbc.sqlite)
+    implementation(libJava.jdbc.sqlite)
 
     // MyBatis
-    implementation(libs.java.mybatis)
+    implementation(libJava.mybatis)
 
     // 日志工具
-    implementation(libs.java.slf4j)
+    implementation(libJava.slf4j.simple)
 }

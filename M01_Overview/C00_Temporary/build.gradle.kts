@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(baselibs.java.all)
+    // implementation(privateLibJava)
 }
