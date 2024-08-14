@@ -8,7 +8,7 @@ package net.bi4vmr.study.struct;
 public class TestVariable {
 
     public static void main(String[] args) {
-        example02();
+        example03();
     }
 
     /**
@@ -16,7 +16,7 @@ public class TestVariable {
      * <p>
      * 在本示例中，我们定义一些变量，并访问它们。
      */
-    static void example01() {
+    static void example02() {
         // 声明变量“姓名”
         String name = "张三";
         // 声明变量“年龄”
@@ -28,11 +28,29 @@ public class TestVariable {
     }
 
     /**
+     * 示例：扩展转换和窄化转换。
+     * <p>
+     * 在本示例中，我们定义一些数值型变量，并将它们转换为其他类型。
+     */
+    static void example03() {
+        // 定义整型变量
+        int x = 128;
+
+        // 扩展转换：将范围较小的值转换为范围较大的值
+        long a = x;
+
+        // 窄化转换：将范围较大的值转换为范围较小的值
+        byte b = (byte) x;
+
+        System.out.println("原始Int值：" + x + ", 转换为Long类型：" + a + ", 转换为Byte类型：" + b);
+    }
+
+    /**
      * 示例：常量的基本应用。
      * <p>
      * 在本示例中，我们定义一些常量，并访问它们。
      */
-    static void example02() {
+    static void example04() {
         // 示例：常量"PI"
         final double PI = 3.141592653;
 
@@ -45,7 +63,7 @@ public class TestVariable {
      * <p>
      * 在本示例中，我们定义一些变量，并在不同的作用域中访问它们。
      */
-    static void example03() {
+    static void example05() {
         int i = 1;
 
         // 定义一个“块”
