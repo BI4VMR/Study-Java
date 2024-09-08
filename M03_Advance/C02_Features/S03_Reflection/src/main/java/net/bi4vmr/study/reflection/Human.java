@@ -33,4 +33,12 @@ class Human extends Animal {
     private void speak(String text) {
         System.out.println("Speek. Content:[" + text + "]");
     }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
