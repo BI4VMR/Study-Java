@@ -1,15 +1,10 @@
 package net.bi4vmr.study.base;
 
 /**
- * Name        : Const
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-12-10 15:01
- * <p>
- * Description : 常量类。
+ * 表示季节的常量。
+ *
+ * @author BI4VMR@outlook.com
+ * @since 1.0.0
  */
 public class Const {
     public static final int SEASON_SPRING = 1;

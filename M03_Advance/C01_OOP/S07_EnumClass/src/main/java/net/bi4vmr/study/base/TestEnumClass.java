@@ -1,9 +1,10 @@
 package net.bi4vmr.study.base;
 
 /**
- * 测试类 - 枚举类。
+ * 测试类：枚举类。
  *
- * @author BI4VMR
+ * @author BI4VMR@outlook.com
+ * @since 1.0.0
  */
 public class TestEnumClass {
 
@@ -11,14 +12,16 @@ public class TestEnumClass {
         example04();
     }
 
-    /*
-     * 示例：使用常量表示季节
+    /**
+     * 示例：使用常量表示季节。
+     * <p>
+     * 在本示例中，我们使用数字代码表示四个季节。
      */
     static void example01() {
         printSeason(Const.SEASON_SPRING);
     }
 
-    // 根据传入的季节代号，打印季节名称。
+    // 根据传入的季节代号，输出季节名称。
     static void printSeason(int code) {
         switch (code) {
             case Const.SEASON_SPRING:
@@ -39,15 +42,17 @@ public class TestEnumClass {
         }
     }
 
-    /*
-     * 示例：使用枚举表示季节
+    /**
+     * 示例：使用枚举表示季节。
+     * <p>
+     * 在本示例中，我们使用数字代码表示四个季节。
      */
     static void example02() {
         // 传入枚举常量
         printSeason2(Season.SUMMER);
     }
 
-    // 根据传入的枚举常量，打印季节名称。
+    // 根据传入的枚举常量，输出季节名称。
     static void printSeason2(Season season) {
         switch (season) {
             case SPRING:
