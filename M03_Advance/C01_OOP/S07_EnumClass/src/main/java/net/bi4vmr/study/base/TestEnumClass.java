@@ -9,7 +9,7 @@ package net.bi4vmr.study.base;
 public class TestEnumClass {
 
     public static void main(String[] args) {
-        example04();
+        example05();
     }
 
     /**
@@ -71,7 +71,7 @@ public class TestEnumClass {
     }
 
     /**
-     * 示例三：访问枚举的内置方法。
+     * 示例三：访问枚举类的内置方法。
      * <p>
      * 在本示例中，我们访问Season中枚举的序号与名称属性，并将它们输出到控制台上。
      */
@@ -80,33 +80,33 @@ public class TestEnumClass {
         System.out.println("访问春天的序号：" + Season.SPRING.ordinal());
         // 获取常量的名称
         System.out.println("访问秋天的名称：" + Season.AUTUMN.name());
-
-        // 打印名称
-        printWeekday(Weekday.SUNDAY);
-    }
-
-    // 根据传入的枚举常量，打印星期名称。
-    static void printWeekday(Weekday weekday) {
-        System.out.println("现在是" + weekday.getStandardName());
     }
 
     /**
-     * 示例四：为枚举类新增自定义属性与方法
+     * 示例四：为枚举类新增自定义属性与方法。
      * <p>
-     * 在本示例中，我们定义一个枚举类，并添加一些自定义属性与方法。
+     * 在本示例中，我们使用枚举表示一周中的七天，并添加一些自定义属性与方法。
      */
     static void example04() {
+        // 调用自定义方法
+        System.out.println(Weekday.SUNDAY.getStandardName() + "的序号是：" + Weekday.SUNDAY.getIndex());
+    }
+
+    /**
+     * 示例五：常用方法模板。
+     */
+    static void example05() {
         // 根据序号获取对应的枚举常量
-        System.out.println("根据序号获取对应的枚举常量：" + Weekday.valueOf(0));
+        System.out.println("根据序号获取对应的枚举常量：" + Weekday.parseFromSerial(0));
 
         // 获取上一项
         System.out.println();
-        System.out.println("获取周一的上一项：" + Weekday.MONDAY.previous());
-        System.out.println("获取周日的上一项：" + Weekday.SUNDAY.previous());
+        System.out.println("获取周一的上一项：" + Weekday.MONDAY.previous().getStandardName());
+        System.out.println("获取周日的上一项：" + Weekday.SUNDAY.previous().getStandardName());
 
         // 获取下一项
         System.out.println();
-        System.out.println("获取周一的下一项：" + Weekday.MONDAY.next());
-        System.out.println("获取周日的下一项：" + Weekday.SUNDAY.next());
+        System.out.println("获取周一的下一项：" + Weekday.MONDAY.next().getStandardName());
+        System.out.println("获取周日的下一项：" + Weekday.SUNDAY.next().getStandardName());
     }
 }
