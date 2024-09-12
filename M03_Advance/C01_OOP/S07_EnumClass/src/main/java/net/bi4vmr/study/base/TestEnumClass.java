@@ -13,7 +13,7 @@ public class TestEnumClass {
     }
 
     /**
-     * 示例：使用常量表示季节。
+     * 示例一：使用常量表示季节。
      * <p>
      * 在本示例中，我们使用数字代码表示四个季节。
      */
@@ -43,7 +43,7 @@ public class TestEnumClass {
     }
 
     /**
-     * 示例：使用枚举表示季节。
+     * 示例二：使用枚举表示季节。
      * <p>
      * 在本示例中，我们使用数字代码表示四个季节。
      */
@@ -70,8 +70,10 @@ public class TestEnumClass {
         }
     }
 
-    /*
-     * 示例：枚举的属性与方法
+    /**
+     * 示例三：访问枚举的内置方法。
+     * <p>
+     * 在本示例中，我们访问Season中枚举的序号与名称属性，并将它们输出到控制台上。
      */
     static void example03() {
         // 获取常量的序号
@@ -88,8 +90,10 @@ public class TestEnumClass {
         System.out.println("现在是" + weekday.getStandardName());
     }
 
-    /*
-     * 示例：实用方法
+    /**
+     * 示例四：为枚举类新增自定义属性与方法
+     * <p>
+     * 在本示例中，我们定义一个枚举类，并添加一些自定义属性与方法。
      */
     static void example04() {
         // 根据序号获取对应的枚举常量
