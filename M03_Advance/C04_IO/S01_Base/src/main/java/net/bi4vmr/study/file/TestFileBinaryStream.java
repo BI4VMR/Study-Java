@@ -21,7 +21,7 @@ public class TestFileBinaryStream {
      * 示例：读写二进制数据（复制音频文件）。
      */
     static void example01() {
-        final String inPath = "./M03_Advance/C04_IO/S01_Base/src/main/resources/Lullaby - Enzalla.mp3";
+        final String inPath = "./M03_Advance/C04_IO/S01_Base/src/main/resources/Lullaby_Enzalla.mp3";
         final String outPath = "./M03_Advance/C04_IO/S01_Base/src/main/resources/copy.mp3";
 
         File file = new File(inPath);
@@ -59,7 +59,7 @@ public class TestFileBinaryStream {
      * 示例：读取二进制文件头部内容，并转为十六进制文本。
      */
     static void example02() {
-        final String path = "./M03_Advance/C04_IO/S01_Base/src/main/resources/Lullaby - Enzalla.mp3";
+        final String path = "./M03_Advance/C04_IO/S01_Base/src/main/resources/Lullaby_Enzalla.mp3";
         File file = new File(path);
         if (!file.exists() || !file.isFile()) {
             System.out.println("目标不存在或不是一个文件！");
