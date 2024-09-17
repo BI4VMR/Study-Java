@@ -1,28 +1,25 @@
-package net.bi4vmr.study;
+package net.bi4vmr.study.base;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 
 /**
- * Name        : net.bi4vmr.study.TestFile
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2023-10-21 23:40
- * <p>
- * Description : 测试类：文件操作。
+ * 测试代码 - 文件管理。
+ *
+ * @author BI4VMR@outlook.com
+ * @since 1.0.0
  */
 public class TestFile {
 
     public static void main(String[] args) throws Exception {
-        example08();
+        example09();
     }
 
-    /*
-     * 获取文件的属性
+    /**
+     * 示例一：获取文件的属性。
+     * <p>
+     * 在本示例中，我们演示File类的常用方法。
      */
     static void example01() throws IOException {
         String path = "dir" + File.separator + "test.txt";
@@ -43,8 +40,10 @@ public class TestFile {
         System.out.println("是否可执行：" + file1.canExecute());
     }
 
-    /*
-     * 文件管理 - 创建文件
+    /**
+     * 示例二：创建文件。
+     * <p>
+     * 在本示例中，我们演示File类的常用方法。
      */
     static void example02() throws IOException {
         File file = new File("1.txt");
@@ -90,7 +89,7 @@ public class TestFile {
      */
     static void example05() {
         File fileSrc = new File("1.txt");
-        File fileDst = new File("1/2.txt");
+        File fileDst = new File("2.txt");
         /*
          * 重命名文件时，需要源文件存在，目标文件不存在，且目标目录存在。
          *
