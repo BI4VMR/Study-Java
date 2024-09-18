@@ -7,5 +7,6 @@ tasks.withType<JavaCompile> {
 }
 
 dependencies {
-    // implementation(privateLibJava)
+    implementation(libJava.okhttps.core)
+    implementation("com.larksuite.oapi:oapi-sdk:2.3.4")
 }
