@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 // 构建工具的依赖配置
 pluginManagement {
     // 声明Gradle插件仓库
@@ -54,7 +56,6 @@ plugins {
 }
 
 // 所有模块的依赖配置
-@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     // 声明Maven组件仓库
@@ -138,14 +139,17 @@ include(":M03_Advance:C01_OOP:S07_EnumClass")
 include(":M03_Advance:C02_Features:S01_Generics")
 include(":M03_Advance:C02_Features:S02_Annotation")
 include(":M03_Advance:C02_Features:S03_Reflection")
-include(":M03_Advance:C03_Concurrent:S01_Thread")
-include(":M03_Advance:C03_Concurrent:S02_Tool")
-include(":M03_Advance:C04_IO:S01_Base")
-include(":M03_Advance:C05_External:S01_Console")
-include(":M03_Advance:C05_External:S02_JNI")
+include(":M03_Advance:C03_Collection:S01_Base")
+include(":M03_Advance:C04_Concurrent:S01_Thread")
+include(":M03_Advance:C04_Concurrent:S02_Tool")
+include(":M03_Advance:C05_IO:S01_Base")
+include(":M03_Advance:C06_External:S01_Console")
+include(":M03_Advance:C06_External:S02_JNI")
 
 // ----- 实用工具 -----
-include(":M04_Utils")
+include(":M04_Utils:C01_Text")
+include(":M04_Utils:C02_DateTime")
+include(":M04_Utils:C03_Math")
 
 // ----- 数据存储 -----
 include(":M05_Storage:C01_File:S01_Base")

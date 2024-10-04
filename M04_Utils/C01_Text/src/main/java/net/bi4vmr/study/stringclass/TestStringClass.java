@@ -1,22 +1,22 @@
-package net.bi4vmr.study.utils.ch02;
+package net.bi4vmr.study.stringclass;
 
 /**
- * Name        : StringUtils
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2022-07-10 10:42
- * <p>
- * Description : 字符串处理相关工具。
+ * 测试类：String类。
+ *
+ * @author BI4VMR@outlook.com
+ * @since 1.0.0
  */
-public class StringUtils {
+public class TestStringClass {
 
     public static void main(String[] args) {
         example06();
     }
 
+    /**
+     * 示例一：验证字符串的不变性。
+     * <p>
+     * 在本示例中，我们创建一个字符串对象，并更改字符串的内容，比较操作前后该对象的内存地址。
+     */
     static void example01() {
         // 创建字符串
         String s = "Test";
@@ -27,6 +27,11 @@ public class StringUtils {
         System.out.println("内容：" + s + " 内存地址：" + s.hashCode());
     }
 
+    /**
+     * 示例二：验证字符串的不变性。
+     * <p>
+     * 在本示例中，我们创建一些字符串对象，分别通过赋值符号和构造方法设置内容，并比较它们的内存地址。
+     */
     static void example02() {
         // 使用赋值方式声明两个String对象
         String s1 = "abc";
@@ -39,9 +44,15 @@ public class StringUtils {
         System.out.println(s3 == s4);
     }
 
+    /**
+     * 示例三：字符串的等值判断。
+     * <p>
+     * 在本示例中，我们创建两个内容相同的字符串对象，并分别通过判等符号( `==` )和 `equals()` 方法测试它们是否相等。
+     */
     static void example03() {
         String s1 = "abc";
         String s2 = new String("abc");
+
         // 使用"=="比较字符串内容
         System.out.println(s1 == s2);
         // 使用"equals()"比较字符串内容
@@ -49,15 +60,17 @@ public class StringUtils {
     }
 
     /**
-     * 示例
+     * 示例四：判断文件名是否为Java源代码。
      * <p>
-     * 综合利用前文所述的方法，解析文件名称，校验文件是否为Java源代码。
+     * 在本示例中，我们综合利用String类提供的方法，解析文件名称，校验文件是否为Java源代码。
      */
     static void example04() {
         // 待测试的文件名
         String filename = "HelloWorld.java";
+
         // 获取最后一个"."的索引
         int index = filename.lastIndexOf(".");
+
         // 找不到"."或者"."在首位均为无效
         if (index == -1 || index == 0) {
             System.out.println("文件名无效！");
@@ -77,9 +90,9 @@ public class StringUtils {
     }
 
     /**
-     * 示例
+     * 示例五：判断邮箱地址是否符合规则。
      * <p>
-     * 综合利用前文所述的方法，校验输入的邮箱地址是否合法。
+     * 在本示例中，我们综合利用String类提供的方法，校验输入的邮箱地址是否符合规则。
      */
     static void example05() {
         // 待测试的邮箱地址
@@ -107,6 +120,11 @@ public class StringUtils {
         }
     }
 
+    /**
+     * 示例六：StringBuilder的基本应用。
+     * <p>
+     * 在本示例中，我们使用StringBuilder构建字符串。
+     */
     static void example06() {
         // 初始化
         StringBuilder sb = new StringBuilder("abc");

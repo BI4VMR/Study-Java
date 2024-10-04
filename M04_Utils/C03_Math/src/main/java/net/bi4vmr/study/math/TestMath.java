@@ -1,20 +1,15 @@
-package net.bi4vmr.study.utils.ch01;
+package net.bi4vmr.study.math;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * Name        : MathUtils
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@outlook.com
- * <p>
- * Date        : 2022-11-19 17:18
- * <p>
- * Description : 数学运算相关工具。
+ * 测试类：概述。
+ *
+ * @author BI4VMR@outlook.com
+ * @since 1.0.0
  */
-public class MathUtils {
+public class TestMath {
 
     public static void main(String[] args) {
         example07();

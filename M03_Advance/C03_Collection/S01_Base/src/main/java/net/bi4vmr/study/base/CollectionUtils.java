@@ -1,4 +1,4 @@
-package net.bi4vmr.study.utils.ch04;
+package net.bi4vmr.study.base;
 
 import java.util.ArrayList;
 import java.util.List;

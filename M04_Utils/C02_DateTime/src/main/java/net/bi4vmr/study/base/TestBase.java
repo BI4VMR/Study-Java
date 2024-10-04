@@ -1,4 +1,4 @@
-package net.bi4vmr.study.utils.ch03;
+package net.bi4vmr.study.base;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,20 +7,15 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Name        : DateTimeUtils
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@qq.com
- * <p>
- * Date        : 2022-11-20 11:24
- * <p>
- * Description : 时间与日期相关工具。
+ * 测试类：概述。
+ *
+ * @author BI4VMR@outlook.com
+ * @since 1.0.0
  */
-public class DateTimeUtils {
+public class TestBase {
 
     public static void main(String[] args) {
-        example06();
+        example04();
     }
 
     static void example01() {
@@ -59,7 +54,7 @@ public class DateTimeUtils {
 
     static void example04() {
         // 创建SimpleDateFormat实例并指定格式
-        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Q");
         // 格式化当前日期
         System.out.println(s.format(new Date()));
     }
