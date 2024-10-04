@@ -1,4 +1,4 @@
-package net.bi4vmr.study.math;
+package net.bi4vmr.study.bigdecimal;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -9,7 +9,7 @@ import java.math.RoundingMode;
  * @author BI4VMR@outlook.com
  * @since 1.0.0
  */
-public class TestMath {
+public class TestBigDecimal {
 
     public static void main(String[] args) {
         example02();
