@@ -1,9 +1,10 @@
-package net.bi4vmr.study.struct;
+package net.bi4vmr.study;
 
 /**
- * 测试代码 - 变量。
+ * 测试代码：变量。
  *
  * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class TestVariable {
 
@@ -12,7 +13,7 @@ public class TestVariable {
     }
 
     /**
-     * 示例：变量的基本应用。
+     * 示例二：变量的基本应用。
      * <p>
      * 在本示例中，我们定义一些变量，并访问它们。
      */
@@ -28,7 +29,7 @@ public class TestVariable {
     }
 
     /**
-     * 示例：扩展转换和窄化转换。
+     * 示例三：扩展转换和窄化转换。
      * <p>
      * 在本示例中，我们定义一些数值型变量，并将它们转换为其他类型。
      */
@@ -46,7 +47,7 @@ public class TestVariable {
     }
 
     /**
-     * 示例：常量的基本应用。
+     * 示例四：常量的基本应用。
      * <p>
      * 在本示例中，我们定义一些常量，并访问它们。
      */
@@ -59,7 +60,7 @@ public class TestVariable {
     }
 
     /**
-     * 示例：变量的作用域。
+     * 示例五：变量的作用域。
      * <p>
      * 在本示例中，我们定义一些变量，并在不同的作用域中访问它们。
      */

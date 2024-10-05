@@ -4,20 +4,21 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * 测试代码 - 控制台。
+ * 测试代码：终端交互。
  *
  * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
-public class TestConsole {
+public class TestTerminal {
 
     public static void main(String[] args) {
         example05();
     }
 
     /**
-     * 示例：Scanner的基本应用。
+     * 示例一：Scanner的基本应用。
      * <p>
-     * 从控制台接收两个数字，并将它们的和输出到控制台上
+     * 在本示例中，我们从控制台接收两个数字，并将它们的和输出到控制台上。
      */
     static void example01() {
         Scanner scanner = new Scanner(System.in);
@@ -45,6 +46,12 @@ public class TestConsole {
      * <p>
      * 在本示例中，我们使用控制台输出方法显示变量的值。
      */
+
+    /**
+     * 示例二：控制台输出方法的基本应用。
+     * <p>
+     * 在本示例中，我们使用控制台输出方法显示变量的值。
+     */
     static void example02() {
         int i = 100;
         String s = "Hello";
@@ -61,7 +68,7 @@ public class TestConsole {
     }
 
     /**
-     * 示例：格式化输出方法的基本应用。
+     * 示例三：格式化输出方法的基本应用。
      * <p>
      * 在本示例中，我们使用格式化输出方法向控制台输出文本信息。
      */
@@ -85,7 +92,7 @@ public class TestConsole {
     }
 
     /**
-     * 示例：格式化输出小数。
+     * 示例四：格式化输出小数。
      * <p>
      * 在本示例中，我们使用格式化输出方法控制小数的位数。
      */
@@ -105,7 +112,7 @@ public class TestConsole {
     }
 
     /**
-     * 示例：转义字符的基本应用。
+     * 示例五：转义字符的基本应用。
      * <p>
      * 在本示例中，我们使用转义字符控制输出文本的格式。
      */

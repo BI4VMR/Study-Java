@@ -1,15 +1,10 @@
 package net.bi4vmr.study.exception;
 
 /**
- * Name        : CustomException
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@qq.com
- * <p>
- * Date        : 2022-11-25 23:47
- * <p>
- * Description : 自定义异常。
+ * 自定义异常。
+ *
+ * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class CustomException extends Exception {
 

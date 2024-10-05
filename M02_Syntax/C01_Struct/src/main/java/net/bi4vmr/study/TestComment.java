@@ -1,9 +1,9 @@
-package net.bi4vmr.study.struct;
+package net.bi4vmr.study;
 
 import java.math.BigDecimal;
 
 /**
- * 测试代码 - Java文档注释。
+ * 测试代码：Java文档注释。
  *
  * @author bi4vmr@outlook.com
  * @version 1.0

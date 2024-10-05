@@ -44,43 +44,6 @@ public class TestMath {
         System.out.println("生成随机数：" + c);
     }
 
-    static void example022() {
-        // 非0正数除以0，结果为正无穷。
-        double a = 100 / 0.0;
-        System.out.println("100除以0.0：" + a);
-
-        // 非0负数除以0，结果为负无穷。
-        double b = -100 / 0.0;
-        System.out.println("-100除以0.0：" + b);
-    }
-
-    static void example03() {
-        // 比较两个正无穷值
-        float x = 1 / 0.0F;
-        double y = 2 / 0.0;
-        System.out.println(x == y);
-        System.out.println(x == Double.POSITIVE_INFINITY);
-
-        // 将正无穷强制转换为整数
-        System.out.println((int) x);
-        System.out.println((long) x);
-    }
-
-    static void example04() {
-        // 浮点型0除以0结果为"NaN"
-        double a = 0.0 / 0.0;
-        System.out.println(a);
-
-        // 负数的平方根结果为"NaN"
-        double b = Math.sqrt(-2);
-        System.out.println(b);
-
-        // 比较两个NaN值是否相等
-        System.out.println(a == a);
-        System.out.println(a == b);
-        System.out.println(Double.isNaN(a));
-    }
-
     /**
      * 使用正确的方式初始化BigDecimal对象。
      */

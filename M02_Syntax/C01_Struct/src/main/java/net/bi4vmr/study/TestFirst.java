@@ -1,4 +1,4 @@
-package net.bi4vmr.study.struct;
+package net.bi4vmr.study;
 
 // 定义一个“类”，名称为TestFirst。
 public class TestFirst {

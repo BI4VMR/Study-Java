@@ -121,8 +121,8 @@ include(":M01_Overview:C01_HelloWorld")
 
 // ----- 基本语法 -----
 include(":M02_Syntax:C01_Struct")
-include(":M02_Syntax:C02_Operator")
-include(":M02_Syntax:C03_Console")
+include(":M02_Syntax:C02_Terminal")
+include(":M02_Syntax:C03_Operator")
 include(":M02_Syntax:C04_Control")
 include(":M02_Syntax:C05_Method")
 include(":M02_Syntax:C06_Array")
