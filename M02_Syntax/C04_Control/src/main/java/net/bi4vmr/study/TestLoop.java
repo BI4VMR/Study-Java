@@ -9,13 +9,15 @@ package net.bi4vmr.study;
 public class TestLoop {
 
     public static void main(String[] args) {
-        example06();
+        example12();
     }
 
-    /*
-     * 在控制台上显示从1到5的所有整数。
+    /**
+     * 示例七："while"语句的基本应用。
+     * <p>
+     * 在本示例中，我们向控制台输出从"1"到"5"的所有整数。
      */
-    static void example01() {
+    static void example07() {
         int i = 1;
         // 当变量“小于等于5”时执行循环
         while (i <= 5) {
@@ -25,10 +27,12 @@ public class TestLoop {
         }
     }
 
-    /*
-     * 求50以内所有偶数之和。
+    /**
+     * 示例八："do-while"语句的基本应用。
+     * <p>
+     * 在本示例中，我们计算"1"到"50"之间所有偶数之和，并将结果输出到控制台上。
      */
-    static void example02() {
+    static void example08() {
         // 保存 1-50 之间偶数的和
         int sum = 0;
         // 循环变量，代表 1-50 之间的偶数，每轮循环数值都将被改变一次。
@@ -44,10 +48,12 @@ public class TestLoop {
         System.out.println("50以内的偶数之和为：" + sum);
     }
 
-    /*
-     * 计算1到100之间不能被3整除的数之和。
+    /**
+     * 示例九："for"语句的基本应用。
+     * <p>
+     * 在本示例中，我们计算"1"到"100"之间不能被"3"整除的数之和，并将结果输出到控制台上。
      */
-    static void example03() {
+    static void example09() {
         // 保存不能被3整除的数之和
         int sum = 0;
 
@@ -63,10 +69,12 @@ public class TestLoop {
         System.out.print("1到100之间不能被3整除的数之和为：" + sum);
     }
 
-    /*
-     * 使用"*"在控制台上打印直角三角形。
+    /**
+     * 示例十：在控制台上输出三角形。
+     * <p>
+     * 在本示例中，我们使用"*"在控制台上输出直角三角形。
      */
-    static void example04() {
+    static void example10() {
         // 外层循环控制行数
         for (int i = 1; i <= 5; i++) {
             // 内层循环控制每行的*号数
@@ -79,10 +87,12 @@ public class TestLoop {
         }
     }
 
-    /*
-     * 将从1开始的正整数依次累加，如果和大于20，则停止累加，并输出当前的累加结果。
+    /**
+     * 示例十一："break"语句的基本应用。
+     * <p>
+     * 在本示例中，我们累加从"1"开始的正整数，并找出使和超过"20"的数字。
      */
-    static void example05() {
+    static void example11() {
         // 保存累加数值
         int sum = 0;
         for (int i = 1; ; i++) {
@@ -98,10 +108,12 @@ public class TestLoop {
         }
     }
 
-    /*
-     * 求1到10之间的所有偶数之和
+    /**
+     * 示例十二："continue"语句的基本应用。
+     * <p>
+     * 在本示例中，我们计算"1"到"10"之间所有偶数之和。
      */
-    static void example06() {
+    static void example12() {
         // 保存累加值
         int sum = 0;
         for (int i = 1; i <= 10; i++) {
