@@ -1,15 +1,10 @@
-package net.bi4vmr.study.base.ch03;
+package net.bi4vmr.study;
 
 /**
- * Name        : LoopDemo
- * <p>
- * Author      : BI4VMR
- * <p>
- * Email       : bi4vmr@qq.com
- * <p>
- * Date        : 2022-11-28 22:51
- * <p>
- * Description : 循环结构示例。
+ * 测试代码：循环结构。
+ *
+ * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class TestLoop {
 
