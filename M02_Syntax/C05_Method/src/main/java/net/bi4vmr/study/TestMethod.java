@@ -1,19 +1,17 @@
 package net.bi4vmr.study;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
- * 测试代码 - 方法。
+ * 测试代码：方法。
  *
  * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class TestMethod {
 
     public static void main(String[] args) {
-        example04();
+        example05();
     }
 
     /**
@@ -28,7 +26,7 @@ public class TestMethod {
     }
 
     /**
-     * 示例：参数的基本应用。
+     * 示例一：参数的基本应用。
      * <p>
      * 在本示例中，我们定义一个方法，接收两个整型参数，功能是将它们的值累加求和，并将结果输出到控制台上。
      */
@@ -55,9 +53,9 @@ public class TestMethod {
     }
 
     /**
-     * 示例：不同数据类型参数的区别。
+     * 示例二：基本与引用数据类型参数的区别。
      * <p>
-     * 在本示例中，我们定义一个方法，接收两个整型参数，功能是将它们的值累加求和，并将结果输出到控制台上。
+     * 在本示例中，我们定义一个方法，分别接收基本数据类型与引用数据类型参数，然后在方法内部改变它们，最后在方法外部访问它们。
      */
     static void example02() {
         // 基本数据类型
@@ -84,7 +82,7 @@ public class TestMethod {
     }
 
     /**
-     * 示例：返回值的基本应用。
+     * 示例三：返回值的基本应用。
      * <p>
      * 在本示例中，我们对前文“示例一”中的 `plus()` 方法进行修改，通过返回值汇报计算结果。
      */
@@ -99,67 +97,47 @@ public class TestMethod {
     }
 
     /**
-     * 计算两数之和。
-     *
-     * @param a 运算数A。
-     * @param b 运算数B。
-     * @return 两数之和。
-     */
-    static void compare(int a, int b) {
-        if (a <= b) {
-            // 使用"return"退出方法
-            return;
-        }
-
-        System.out.println("a > b");
-    }
-
-    /**
-     * 示例：返回值的基本应用。
-     * <p>
-     * 在本示例中，我们对前文“示例一”中的 `plus()` 方法进行修改，通过返回值汇报计算结果。
-     */
-    static void example04() {
-        int x = 6;
-        int y = 8;
-
-        compare(x, y);
-    }
-
-    /**
-     * 计算三数之和
+     * 计算三数之和。
      *
      * @param a 运算数A。
      * @param b 运算数B。
      * @param c 运算数C。
      * @return 三数之和。
      */
-    static int plus(int a, int b, int c) {
+    static int plus2(int a, int b, int c) {
         int sum = a + b + c;
         return sum;
     }
 
+
     /**
-     * 示例：方法的参数 - 基本类型与引用类型。
+     * 示例四：方法的重载。
+     * <p>
+     * 在本示例中，我们对前文“示例三”进行扩充，新增计算三个数之和的方法。
      */
-    static void example0444() {
+    static void example04() {
         int x = 8;
         int y = 6;
         int z = 10;
 
         // 调用具有两个参数的"plus()"方法
-        plus(x, y);
+        int sum1 = plus2(x, y);
+        System.out.println("两数之和：" + sum1);
         // 调用具有三个参数的"plus()"方法
-        int sum = plus(x, y, z);
-        System.out.println("三数之和：" + sum);
+        int sum2 = plus2(x, y, z);
+        System.out.println("三数之和：" + sum2);
     }
 
     /**
-     * 包含可变参数的方法。
+     * 计算若干整数之和。
+     *
+     * @param args 运算数。
+     * @return 所有运算数之和。
      */
     static long calculateSum(Integer... args) {
         // 可变参数本质上是数组
         Integer[] type = args;
+        System.out.println("输入参数为：" + Arrays.toString(type));
 
         long sum = 0;
         // 遍历可变参数
@@ -172,7 +150,9 @@ public class TestMethod {
     }
 
     /**
-     * 示例：可变参数。
+     * 示例五：可变参数的基本应用。
+     * <p>
+     * 在本示例中，我们对前文“示例四”进行优化，通过可变参数实现整数求和方法。
      */
     static void example05() {
         // 传递可变参数（通常用法）
@@ -223,7 +203,9 @@ public class TestMethod {
     }
 
     /**
-     * 示例：回调方法 - 基本应用。
+     * 示例六：回调方法的基本应用。
+     * <p>
+     * 在本示例中，我们定义一个接口，将其作为方法的参数，并在方法中回调接口的方法。
      */
     static void example06() {
         System.out.println("Test method start.");
@@ -239,32 +221,54 @@ public class TestMethod {
         System.out.println("Test method end.");
     }
 
+    /**
+     * 示例七：管理多个回调实现。
+     * <p>
+     * 在本示例中，我们编写一个FileHelper类，使其能够管理多个回调。
+     */
     static class FileHelper {
-        // 声明集合存储调用者传入的实例
-        List<Callback> callbacks = new ArrayList<>();
+
+        // 声明集合，存储调用者传入的回调实现对象。
+        private final List<Callback> callbacks = new ArrayList<>();
+
+        // 回调接口
+        interface Callback {
+            void onResult(boolean result, String message);
+        }
 
         // 注册回调
-        void addCallback(Callback cb) {
-            // 防止重复注册回调
-            if (!callbacks.contains(cb)) {
-                callbacks.add(cb);
+        public void addCallback(Callback cb) {
+            // 防止多线程调用导致集合不一致
+            synchronized (callbacks) {
+                // 防止重复注册回调
+                if (!callbacks.contains(cb)) {
+                    callbacks.add(cb);
+                }
             }
         }
 
         // 注销回调
-        void removeCallback(Callback cb) {
-            callbacks.remove(cb);
+        public void removeCallback(Callback cb) {
+            synchronized (callbacks) {
+                callbacks.remove(cb);
+            }
         }
 
-        void saveFile() {
+        // 通知执行结果
+        private void notifyResult(boolean result, String message) {
+            // 遍历回调实现集合，通知所有调用者。
+            for (Callback item : callbacks) {
+                item.onResult(result, message);
+            }
+        }
+
+        // 业务逻辑
+        public void saveFile() {
             TimerTask task = new TimerTask() {
 
                 @Override
                 public void run() {
-                    // 遍历回调实现，通知所有调用者。
-                    for (Callback item : callbacks) {
-                        item.onResult(true, "OK.");
-                    }
+                    notifyResult(true, "OK");
                     // 清除Timer，终止当前程序。
                     System.gc();
                 }

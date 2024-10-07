@@ -36,16 +36,16 @@ pluginManagement {
             } else {
                 println("Current host is not in private network, add LOCAL repositorys.")
                 mavenLocal()
+
+                // 腾讯云仓库镜像：Maven中心仓库+Google+JCenter
+                maven { setUrl("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/") }
+                // 阿里云仓库镜像：Gradle社区插件
+                maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin/") }
+
+                mavenCentral()
+                gradlePluginPortal()
             }
         }
-
-        // 腾讯云仓库镜像：Maven中心仓库
-        maven { setUrl("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/") }
-        // 阿里云仓库镜像：Gradle社区插件
-        maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin/") }
-
-        mavenCentral()
-        gradlePluginPortal()
     }
 }
 
@@ -81,13 +81,13 @@ dependencyResolutionManagement {
                 }
             } else {
                 mavenLocal()
+
+                // 腾讯云仓库镜像：Maven中心仓库+Google+JCenter
+                maven { setUrl("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/") }
+
+                mavenCentral()
             }
         }
-
-        // 腾讯云仓库镜像：Maven中心仓库
-        maven { setUrl("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/") }
-
-        mavenCentral()
     }
 
     // 版本管理配置
