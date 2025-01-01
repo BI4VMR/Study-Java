@@ -1,4 +1,4 @@
-package net.bi4vmr.study.reflection;
+package net.bi4vmr.study.reflection.base;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
@@ -31,7 +31,7 @@ public class TestReflection {
             Class<?> clazz2 = animal.getClass();
 
             // 方式三：通过"Class.forName("<类的完全限定名称>")"获取Class对象
-            Class<?> clazz3 = Class.forName("net.bi4vmr.study.reflection.Animal");
+            Class<?> clazz3 = Class.forName("net.bi4vmr.study.reflection.base.Animal");
 
             System.out.println(clazz1);
             System.out.println(clazz2);

@@ -1,4 +1,4 @@
-package net.bi4vmr.study.reflection;
+package net.bi4vmr.study.reflection.base;
 
 /**
  * 测试类 - 子类。
