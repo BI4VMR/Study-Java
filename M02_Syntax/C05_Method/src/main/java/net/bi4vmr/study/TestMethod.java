@@ -1,7 +1,5 @@
 package net.bi4vmr.study;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.util.*;
 
 /**
@@ -13,7 +11,7 @@ import java.util.*;
 public class TestMethod {
 
     public static void main(String[] args) {
-        example07();
+        example06();
     }
 
     /**
@@ -277,25 +275,6 @@ public class TestMethod {
             };
             // 延迟2秒再执行上述任务，模拟异步操作。
             new Timer().schedule(task, 2000L);
-        }
-    }
-
-    static void example07() {
-        try {
-            FileHelper fileHelper = new FileHelper();
-
-            Class<?> clazz = Class.forName("net.bi4vmr.study.TestMethod$FileHelper$Callback");
-
-            FileHelper.Callback cb = (FileHelper.Callback) Proxy.newProxyInstance(FileHelper.class.getClassLoader(),
-                    new Class[]{clazz},
-                    new MailHandler(fileHelper));
-
-            Method method = FileHelper.class.getDeclaredMethod("addCallback", clazz);
-            method.invoke(fileHelper, cb);
-
-            fileHelper.saveFile();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }
