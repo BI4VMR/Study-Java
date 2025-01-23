@@ -6,9 +6,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
- * 测试代码 - 反射。
+ * 测试代码：反射。
  *
  * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class TestReflection {
 
@@ -17,9 +18,9 @@ public class TestReflection {
     }
 
     /**
-     * 示例：获取类的Class对象。
+     * 示例一：获取类的Class对象。
      * <p>
-     * 在本示例中，我们通过不同的方式获取自定义类Father的Class对象。
+     * 在本示例中，我们通过不同的方式获取自定义类Animal的Class对象。
      */
     static void example01() {
         try {
@@ -42,7 +43,7 @@ public class TestReflection {
     }
 
     /**
-     * 示例：获取类的Class对象 - 基本数据类型与引用数据类型。
+     * 示例二：获取类的Class对象 - 基本数据类型与引用数据类型。
      * <p>
      * 在本示例中，我们分别获取"int"类型与Integer类型的Class对象。
      */
@@ -68,7 +69,7 @@ public class TestReflection {
     }
 
     /**
-     * 示例：获取类的Class对象 - 其他类型。
+     * 示例三：获取类的Class对象 - 其他类型。
      * <p>
      * 在本示例中，我们获取"void"类型与数组类型的Class对象。
      */
