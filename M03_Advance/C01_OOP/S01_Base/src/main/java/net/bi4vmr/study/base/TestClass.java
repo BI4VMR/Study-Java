@@ -1,9 +1,10 @@
 package net.bi4vmr.study.base;
 
 /**
- * 测试类 - 类与对象。
+ * 测试代码：面向对象编程概述。
  *
- * @author BI4VMR
+ * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class TestClass {
 
@@ -11,8 +12,10 @@ public class TestClass {
         example02();
     }
 
-    /*
-     * 示例：由类创建对象，并访问对象的属性与方法。
+    /**
+     * 示例一：面向对象的基本应用。
+     * <p>
+     * 在本示例中，我们定义Person类描述“人类”，并创建一些对象。
      */
     static void example01() {
         // 从模板“人类”创建实体“张三”
