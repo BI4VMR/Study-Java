@@ -9,7 +9,7 @@ package net.bi4vmr.study.oop.base;
 public class TestClass {
 
     public static void main(String[] args) {
-        example02();
+        example01();
     }
 
     /**
@@ -33,14 +33,5 @@ public class TestClass {
         lisi.age = 20;
         lisi.sex = '女';
         lisi.speak();
-    }
-
-    /*
-     * 示例：使用构造方法初始化对象。
-     */
-    static void example02() {
-        // 使用三个参数的构造方法创建对象
-        Person2 zhangsan = new Person2("张三", 18, '男');
-        zhangsan.speak();
     }
 }
