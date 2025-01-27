@@ -1,9 +1,10 @@
-package net.bi4vmr.study.base;
+package net.bi4vmr.study.oop.base;
 
 /**
- * 测试类 - 变量的作用域。
+ * 测试代码：变量的作用域。
  *
- * @author BI4VMR
+ * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class TestScope {
 
@@ -17,13 +18,15 @@ public class TestScope {
     Object g;
 
     public static void main(String[] args) {
-        example01();
+        example02();
     }
 
-    /*
-     * 示例：全局变量
+    /**
+     * 示例二：全局变量与默认值。
+     * <p>
+     * 在本示例中，我们定义一个测试类并声明若干全局变量，并在控制台上输出它们的值。
      */
-    static void example01() {
+    static void example02() {
         // 创建测试类的对象
         TestScope test = new TestScope();
         // 访问全局变量
@@ -36,8 +39,10 @@ public class TestScope {
         System.out.println("g: " + test.g);
     }
 
-    /*
-     * 示例：局部变量
+    /**
+     * 示例三：局部变量。
+     * <p>
+     * 在本示例中，我们在一个方法内定义变量，并尝试在另一个方法中访问它。
      */
     public void function1() {
         // 声明局部变量"x"

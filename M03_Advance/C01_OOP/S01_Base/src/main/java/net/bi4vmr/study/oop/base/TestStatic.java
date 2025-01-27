@@ -1,9 +1,10 @@
-package net.bi4vmr.study.base;
+package net.bi4vmr.study.oop.base;
 
 /**
- * 测试类 - 静态成员。
+ * 测试代码：静态成员。
  *
- * @author BI4VMR
+ * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class TestStatic {
 

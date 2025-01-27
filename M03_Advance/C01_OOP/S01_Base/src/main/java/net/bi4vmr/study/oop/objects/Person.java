@@ -1,4 +1,4 @@
-package net.bi4vmr.study.objects;
+package net.bi4vmr.study.oop.objects;
 
 import java.util.Objects;
 

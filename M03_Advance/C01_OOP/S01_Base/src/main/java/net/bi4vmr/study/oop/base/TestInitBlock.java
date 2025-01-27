@@ -1,9 +1,10 @@
-package net.bi4vmr.study.base;
+package net.bi4vmr.study.oop.base;
 
 /**
- * 测试类 - 初始化块。
+ * 测试代码：初始化块。
  *
- * @author BI4VMR
+ * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class TestInitBlock {
 

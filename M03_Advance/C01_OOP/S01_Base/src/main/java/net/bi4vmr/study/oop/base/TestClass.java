@@ -1,4 +1,4 @@
-package net.bi4vmr.study.base;
+package net.bi4vmr.study.oop.base;
 
 /**
  * 测试代码：面向对象编程概述。

@@ -1,4 +1,4 @@
-package net.bi4vmr.study.base;
+package net.bi4vmr.study.oop.base;
 
 /**
  * 类的示例 - 人类。

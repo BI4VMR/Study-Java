@@ -1,4 +1,4 @@
-package net.bi4vmr.study.objects;
+package net.bi4vmr.study.oop.objects;
 
 /**
  * 测试类 - Object类。
