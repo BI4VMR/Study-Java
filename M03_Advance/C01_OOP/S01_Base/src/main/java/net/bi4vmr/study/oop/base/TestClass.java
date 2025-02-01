@@ -1,7 +1,7 @@
 package net.bi4vmr.study.oop.base;
 
 /**
- * 测试代码：面向对象编程概述。
+ * 测试代码：类与对象。
  *
  * @author bi4vmr@outlook.com
  * @since 1.0.0
