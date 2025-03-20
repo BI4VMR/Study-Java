@@ -7,5 +7,5 @@ tasks.withType<JavaCompile> {
 }
 
 dependencies {
-    testImplementation(libJava.junit5.jupiter)
+    testImplementation(libJava.junit4)
 }
