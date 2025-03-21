@@ -1,4 +1,4 @@
-package net.bi4vmr.study;
+package net.bi4vmr.study.base;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,7 +17,6 @@ public class TestMathUtil {
         Integer result1 = MathUtil.divide(32, 8);
         // 断言：结果非空
         Assert.assertNotNull(result1);
-        Assert.assertNull(result1);
         // 断言：结果等于4
         Assert.assertEquals(result1.longValue(), 4L);
 

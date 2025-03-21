@@ -1,4 +1,4 @@
-package net.bi4vmr.study;
+package net.bi4vmr.study.base;
 
 /**
  * 数学运算工具类。

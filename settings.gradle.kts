@@ -176,6 +176,7 @@ include(":M03_Advance:C06_External:S02_JNI")
 include(":M04_Utils:C01_Text")
 include(":M04_Utils:C02_DateTime")
 include(":M04_Utils:C03_Math")
+include(":M04_Utils:C04_Test:S01_JUnit4")
 
 // ----- 数据存储 -----
 include(":M05_Storage:C01_File:S01_Base")
