@@ -10,7 +10,7 @@ import static org.mockito.Mockito.*;
  * @author BI4VMR@outlook.com
  * @since 1.0.0
  */
-public class TestFileUtil {
+public class FileUtilTest {
 
     @Test
     public void testSaveFileCallback() {

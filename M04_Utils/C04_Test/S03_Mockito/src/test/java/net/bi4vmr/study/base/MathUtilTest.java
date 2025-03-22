@@ -2,6 +2,14 @@ package net.bi4vmr.study.base;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.Before;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.anyInt;
 
 /**
  * MathUtil的测试类。
@@ -9,7 +17,23 @@ import org.junit.Test;
  * @author BI4VMR@outlook.com
  * @since 1.0.0
  */
-public class TestMathUtil {
+public class MathUtilTest {
+
+    @Mock
+    private List<String> mockList;
+
+
+    @Before
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void test1212e() {
+        Mockito.when(mockList.get(anyInt())).thenReturn("BI4VMR");
+
+        System.out.println(mockList.get(3));
+    }
 
     @Test
     public void testDivide() {

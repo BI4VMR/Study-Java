@@ -8,5 +8,5 @@ tasks.withType<JavaCompile> {
 
 dependencies {
     testImplementation(libJava.junit4)
-    testImplementation("org.mockito:mockito-core:5.16.1")
+    testImplementation(libJava.mockito.core)
 }
