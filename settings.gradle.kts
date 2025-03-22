@@ -177,6 +177,8 @@ include(":M04_Utils:C01_Text")
 include(":M04_Utils:C02_DateTime")
 include(":M04_Utils:C03_Math")
 include(":M04_Utils:C04_Test:S01_JUnit4")
+include(":M04_Utils:C04_Test:S02_JUnit5")
+include(":M04_Utils:C04_Test:S03_Mockito")
 
 // ----- 数据存储 -----
 include(":M05_Storage:C01_File:S01_Base")
