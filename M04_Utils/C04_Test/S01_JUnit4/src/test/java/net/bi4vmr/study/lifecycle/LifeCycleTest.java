@@ -1,30 +1,44 @@
 package net.bi4vmr.study.lifecycle;
 
-import net.bi4vmr.study.base.MathUtil;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
- * MathUtil的测试类。
+ * JUnit生命周期测试。
  *
  * @author BI4VMR@outlook.com
  * @since 1.0.0
  */
 public class LifeCycleTest {
 
-    @Test
-    public void testDivide() {
-        // 测试正常的情况
-        Integer result1 = MathUtil.divide(32, 8);
-        // 断言：结果非空
-        Assert.assertNotNull(result1);
-        // 断言：结果等于4
-        Assert.assertEquals(result1.longValue(), 4L);
+    @BeforeClass
+    public static void setupClass() {
+        System.out.println("@BeforeClass：在测试类首次加载时被执行");
+        // 此处用于创建全局资源，例如：初始化数据库连接。
+    }
 
-        // 测试除数为"0"的情况
-        Integer result2 = MathUtil.divide(100, 0);
-        // 断言：结果为空
-        Assert.assertNull(result2);
+    @Before
+    public void setup() {
+        System.out.println("@Before：在每个测试方法之前被执行");
+    }
+
+    @After
+    public void tearDown() {
+        System.out.println("@After：在每个测试方法之后被执行");
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+        System.out.println("@AfterClass：在测试类中的所有方法执行完毕时被执行");
+        // 此处用于释放全局资源，例如：清理数据库连接。
+    }
+
+    @Test
+    public void testFunction01() {
+        System.out.println("@Test：测试方法01");
+    }
+
+    @Test
+    public void testFunction02() {
+        System.out.println("@Test：测试方法02");
     }
 }
