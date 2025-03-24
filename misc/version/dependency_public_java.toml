@@ -90,5 +90,5 @@ junit5_jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.
 # 兼容模块（可以运行JUnit4以及更早版本的测试代码）
 junit5_vintage = { group = "org.junit.vintage", name = "junit-vintage-engine", version.ref = "junit5_jupiter" }
 
-# Mockito
+# < Mockito >
 mockito_core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito_core" }

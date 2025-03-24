@@ -9,7 +9,7 @@ import org.junit.Test;
  * @author BI4VMR@outlook.com
  * @since 1.0.0
  */
-public class TestMathUtil {
+public class MathUtilTest {
 
     @Test
     public void testDivide() {

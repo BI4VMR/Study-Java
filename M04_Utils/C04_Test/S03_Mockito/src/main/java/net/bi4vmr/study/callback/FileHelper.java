@@ -3,14 +3,14 @@ package net.bi4vmr.study.callback;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class FileUtil {
+public class FileHelper {
 
     /**
      * 保存文件。
      *
      * @param callback 回调接口实现。
      */
-    static void saveFile(FileCallback callback) {
+    public void saveFile(FileCallback callback) {
         TimerTask task = new TimerTask() {
 
             @Override
