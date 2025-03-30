@@ -5,7 +5,7 @@ import org.junit.*;
 /**
  * JUnit生命周期测试。
  *
- * @author BI4VMR@outlook.com
+ * @author bi4vmr@outlook.com
  * @since 1.0.0
  */
 public class LifeCycleTest {

@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * MathUtil的测试类。
  *
- * @author BI4VMR@outlook.com
+ * @author bi4vmr@outlook.com
  * @since 1.0.0
  */
 public class MathUtilTest {
