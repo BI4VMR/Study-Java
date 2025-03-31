@@ -1,15 +1,15 @@
-package net.bi4vmr.study.judgment;
+package net.bi4vmr.study.resultcheck;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * 判断。
+ * 验证结果。
  *
  * @author bi4vmr@outlook.com
  * @since 1.0.0
  */
-public class JudgmentTest {
+public class AssertTest {
 
     @Test
     public void testAssert() {
@@ -38,6 +38,7 @@ public class JudgmentTest {
         // 比较数组是否相同
         Assert.assertArrayEquals(array, array);
 
-        Assert.fail();
+        // 断言失败（可用于编写自定义断言）
+        // Assert.fail();
     }
 }

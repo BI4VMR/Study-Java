@@ -1,7 +1,7 @@
 package net.bi4vmr.study.base;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * MathUtil的测试类。
