@@ -1,14 +1,5 @@
 package net.bi4vmr.study;
 
-
-
-/**
- * TODO 添加描述。
- *
- * @author BI4VMR@outlook.com
- * @since 1.0.0
- */
-
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;
 import java.util.UUID;
