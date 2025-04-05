@@ -11,6 +11,9 @@ import org.junit.Test;
  */
 public class MathUtilTest {
 
+    /**
+     * 示例一：构建JUnit4环境。
+     */
     @Test
     public void testDivide() {
         // 测试正常的情况
@@ -24,5 +27,21 @@ public class MathUtilTest {
         Integer result2 = MathUtil.divideSafe(100, 0);
         // 断言：结果为空
         Assert.assertNull(result2);
+    }
+
+    /**
+     * 示例二：检测异常。
+     */
+    @Test(expected = ArithmeticException.class)
+    public void testException() {
+        int a = 100 / 0;
+    }
+
+    /**
+     * 示例二：检测超时。
+     */
+    @Test(timeout = 1000L)
+    public void testTimeout() throws InterruptedException {
+        Thread.sleep(5000L);
     }
 }

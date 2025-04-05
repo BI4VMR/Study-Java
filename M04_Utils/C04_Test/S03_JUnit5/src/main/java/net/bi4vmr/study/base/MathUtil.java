@@ -8,7 +8,7 @@ package net.bi4vmr.study.base;
  */
 public class MathUtil {
 
-    public static Integer divide(int a, int b) {
+    public static Integer divideSafe(int a, int b) {
         if (b == 0) {
             return null;
         } else {
