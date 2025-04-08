@@ -38,10 +38,14 @@ public class MathUtilTest {
     }
 
     /**
-     * 示例二：检测超时。
+     * 示例三：检测超时。
      */
     @Test(timeout = 1000L)
     public void testTimeout() throws InterruptedException {
-        Thread.sleep(5000L);
+        // > 1s，会导致执行失败。
+        // Thread.sleep(5000L);
+
+        // < 1s，不会导致执行失败。
+        Thread.sleep(500L);
     }
 }
