@@ -49,7 +49,7 @@ public class UUIDv7 {
         }
     }
 
-    private static void gv5(){
+    private static void gv5() {
         // 生成一个版本5的UUID
         UUID namespaceUUID = UUID.fromString("12345678-1234-1234-1234-123456789012");
         String name = "example";
