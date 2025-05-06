@@ -149,12 +149,12 @@ include(":M01_Overview:C01_HelloWorld")
 
 // ----- 基本语法 -----
 include(":M02_Syntax:C01_Struct")
-include(":M02_Syntax:C02_Terminal")
-include(":M02_Syntax:C03_Operator")
-include(":M02_Syntax:C04_Control")
-include(":M02_Syntax:C05_Method")
-include(":M02_Syntax:C06_Array")
-include(":M02_Syntax:C07_Exception")
+include(":M02_Syntax:C02_Operator")
+include(":M02_Syntax:C03_Control")
+include(":M02_Syntax:C04_Method")
+include(":M02_Syntax:C05_Array")
+include(":M02_Syntax:C06_Exception")
+include(":M02_Syntax:C07_Terminal")
 
 // ----- 高级特性 -----
 include(":M03_Advance:C01_OOP:S01_Base")
