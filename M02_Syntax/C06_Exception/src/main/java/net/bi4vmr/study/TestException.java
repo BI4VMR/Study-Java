@@ -22,7 +22,7 @@ public class TestException {
     /**
      * 示例一：异常捕获语句的基本应用。
      * <p>
-     * 在本示例中，我们分别书写正常、异常两种代码，并对比它们的行为。
+     * 在本示例中，我们将两个整数相除的语句放置在 `try-catch-finally` 语句中，使用不同的值多次运行程序，对比程序的行为。
      */
     static void example01() {
         try {
@@ -159,9 +159,9 @@ public class TestException {
     }
 
     /**
-     * 示例八：自定义异常。
+     * 示例七：定义并使用自定义异常。
      * <p>
-     * 在本示例中，我们书写一个“除以0”的语句，将捕获到的算术异常转为前文“示例七”中的CustomException，并向调用者抛出。
+     * 在本示例中，我们创建一个自定义异常类，在测试方法中抛出并捕获该异常。
      */
     static void example07() {
         try {
@@ -177,9 +177,9 @@ public class TestException {
     }
 
     /**
-     * 示例八：异常链。
+     * 示例八：异常链的基本应用。
      * <p>
-     * 在本示例中，我们书写一个“除以0”的语句，将捕获到的算术异常转为前文“示例七”中的CustomException，并向调用者抛出。
+     * 在本示例中，我们故意制造一个算术异常，并将其捕获后转为前文“示例七”中的CustomException，再向调用者抛出。
      */
     static void example08() {
         try {
@@ -194,8 +194,8 @@ public class TestException {
             int i = 10 / 0;
         } catch (ArithmeticException ae) {
             System.out.println("捕获算术异常，将其转换为自定义异常再向上层抛出。");
-            CustomException customException = new CustomException(99, ae.getMessage());
-            // 使用"initCause()"方法指明引起CustomException的原始异常
+            CustomException customException = new CustomException(99, "自定义异常");
+            // 使用 `initCause()` 方法指明引起CustomException的原始异常
             customException.initCause(ae);
             // 抛出新建的CustomException
             throw customException;
