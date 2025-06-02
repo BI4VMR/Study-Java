@@ -52,7 +52,7 @@ public class TestException {
     /**
      * 示例三：捕获多种类型的异常。
      * <p>
-     * 在本示例中，我们书写多个"catch"块，分别捕获不同类型的异常。
+     * 在本示例中，我们使用多个 `catch` 块，分别捕获不同类型的异常。
      */
     static void example03() {
         try {
@@ -66,9 +66,9 @@ public class TestException {
     }
 
     /**
-     * 示例四：异常与"return"语句。
+     * 示例四：异常与 `return` 语句。
      * <p>
-     * 在本示例中，我们故意制造一个异常，然后在"try ... catch ... finally"语句中调用"return"语句，测试跳转规则。
+     * 在本示例中，我们故意制造一个异常，然后在 `try-catch-finally` 语句中添加 `return` 语句，测试跳转规则。
      */
     static void example04() {
         String result = returnInTryCatch();
