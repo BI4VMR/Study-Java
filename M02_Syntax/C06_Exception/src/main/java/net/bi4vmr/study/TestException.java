@@ -89,7 +89,7 @@ public class TestException {
     }
 
     /**
-     * 示例五："try-with-resources"语法的基本应用。
+     * 示例五： `try-with-resources` 语法的基本应用。
      * <p>
      * 在本示例中，我们从控制台读取一行文本，并将其写入文件。
      */
@@ -117,16 +117,15 @@ public class TestException {
     }
 
     /**
-     * 示例五："try-with-resources"语法的基本应用。
+     * 示例五： `try-with-resources` 语法的基本应用。
      * <p>
      * 在本示例中，我们从控制台读取一行文本，并将其写入文件。
      */
     static void example05_2() {
-        // 在"try"后的括号内声明资源变量
-
-        Scanner scanner = new Scanner(System.in);
+        // 在 `try` 后的括号内声明资源变量
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
-             scanner) {
+             Scanner scanner = new Scanner(System.in)
+        ) {
             System.out.println("请输入文本，按回车键确认：");
             String text = scanner.nextLine();
             writer.write(text);
