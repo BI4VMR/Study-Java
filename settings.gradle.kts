@@ -189,3 +189,6 @@ include(":M05_Storage:C03_SQL:S02_MyBatis:E01_Base")
 
 // ----- 网络通讯 -----
 include(":M06_Network:C01_Base")
+
+// ----- 企业框架 -----
+include(":M07_JavaEE:C03_SpringBoot:S01_Base")
