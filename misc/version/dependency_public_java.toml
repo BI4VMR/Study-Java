@@ -11,6 +11,7 @@ jdbc_sqlite = "3.46.0.0"
 jdbc_mariadb = "3.2.0"
 
 mybatis = "3.5.16"
+mybatis_springboot-starter = "3.0.4"
 
 druid = "1.2.25"
 
@@ -64,7 +65,9 @@ jdbc_mariadb = { group = "org.mariadb.jdbc", name = "mariadb-java-client", versi
 
 # <数据库工具>
 # MyBatis
-mybatis = { group = "org.mybatis", name = "mybatis", version.ref = "mybatis" }
+mybatis_core = { group = "org.mybatis", name = "mybatis", version.ref = "mybatis" }
+# MyBatis・SpringBoot支持
+mybatis_springboot-starter = { group = "org.mybatis.spring.boot", name = "mybatis-spring-boot-starter", version.ref = "mybatis_springboot-starter" }
 
 # <数据库连接池>
 # Druid・核心
