@@ -39,13 +39,13 @@ public class UUIDv7 {
 
     public static void main(String[] args) {
         for (int i = 0; i < 100; i++) {
-            // var uuid = UUIDv7.randomUUID();
+            var uuid = UUIDv7.randomUUID();
             // UUID uuid = UUID.randomUUID();
-            UUID uuid = UUID.nameUUIDFromBytes("ss".getBytes());
+            // UUID uuid = UUID.nameUUIDFromBytes("ss".getBytes());
             // UUID uuid = UUID.fromString("1e4d5a6b-cdef-2abc-def0-1234567890ab");
             System.out.println(uuid);
 
-            gv5();
+            // gv5();
         }
     }
 
