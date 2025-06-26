@@ -45,6 +45,16 @@ public class UUIDv7 {
             // UUID uuid = UUID.fromString("1e4d5a6b-cdef-2abc-def0-1234567890ab");
             System.out.println(uuid);
 
+            new Thread(() -> {
+                try{
+                    MessageDigest md = MessageDigest.getInstance("MD5");
+                    System.out.println("md:"+md.hashCode());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }).start();
+
             // gv5();
         }
     }
