@@ -4,9 +4,10 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * 测试代码 - 线程。
+ * 示例代码：线程。
  *
  * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class TestThread {
 
@@ -15,7 +16,9 @@ public class TestThread {
     }
 
     /**
-     * 示例：基本应用 - 继承Thread类。
+     * 示例一：创建线程（继承Thread类）。
+     * <p>
+     * 在本示例中，我们继承Thread类并重写 `run()` 方法，创建自定义线程。
      */
     static void example01() {
         // 构造MyThread对象，每个MyThread对象都是一个独立的线程。
@@ -31,7 +34,9 @@ public class TestThread {
     }
 
     /**
-     * 示例：基本应用 - 实现Runnable接口。
+     * 示例二：创建线程（实现Runnable接口）。
+     * <p>
+     * 在本示例中，我们实现Runnable接口并构造Thread实例，创建自定义线程。
      */
     static void example02() {
         // 构造Thread对象，并通过构造方法传入任务。
@@ -59,7 +64,9 @@ public class TestThread {
     }
 
     /**
-     * 示例：守护线程。
+     * 示例三：守护线程。
+     * <p>
+     * 在本示例中，我们创建前文“示例一”中的MyThread线程，并将其设置为守护线程。
      */
     static void example03() {
         System.out.println("Main thread starded.");
@@ -74,7 +81,9 @@ public class TestThread {
     }
 
     /**
-     * 示例：线程休眠。
+     * 示例四：线程休眠。
+     * <p>
+     * 在本示例中，我们创建一个线程，使其休眠3秒后再恢复运行。
      */
     static void example04() {
         // 构造Thread实例，并通过构造方法传入任务。
@@ -93,7 +102,9 @@ public class TestThread {
     }
 
     /**
-     * 示例：中断任务 - 中断未阻塞的任务。
+     * 示例五：中断未阻塞的任务。
+     * <p>
+     * 在本示例中，我们编写一个支持中断请求的线程，并从外部发出中断指令，观察其行为。
      */
     static void example05() {
         Thread subThread = new Thread(() -> {
@@ -102,7 +113,7 @@ public class TestThread {
                 // 每轮循环开始前，先判断当前任务是否已被取消。
                 if (Thread.currentThread().isInterrupted()) {
                     System.out.println("SubThread has been interrupted!");
-                    // 退出"run()"方法，结束当前任务。
+                    // 退出 `run()` 方法，结束当前任务。
                     return;
                 }
 
@@ -126,7 +137,9 @@ public class TestThread {
     }
 
     /**
-     * 示例：中断任务 - 中断已阻塞的任务。
+     * 示例六：中断已阻塞的任务。
+     * <p>
+     * 在本示例中，我们对阻塞状态的线程发送中断指令，观察其行为。
      */
     static void example06() {
         Thread subThread = new Thread(() -> {
