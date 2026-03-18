@@ -6,7 +6,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
 /**
- * 测试代码 - 线程。
+ * 示例代码：任务调度。
  *
  * @author bi4vmr@outlook.com
  */
@@ -14,6 +14,21 @@ public class TestCooperation {
 
     public static void main(String[] args) {
         example05();
+    }
+
+    /**
+     * 示例一：串行任务。
+     * <p>
+     * 在本示例中，我们创建一个线程，并调用两次 `task()` 方法，观察执行顺序。
+     */
+    static void example01() {
+        Thread thread = new Thread(() -> {
+            // 先执行第一个任务
+            task("A", 2000L);
+            // 第一个任务执行完毕后，再执行第二个任务。
+            task("B", 2000L);
+        });
+        thread.start();
     }
 
     static void task(String name, long time) {
@@ -26,21 +41,11 @@ public class TestCooperation {
         }
     }
 
-    /**
-     * 示例：顺序执行任务。
-     */
-    static void example01() {
-        Thread thread = new Thread(() -> {
-            // 先执行第一个任务
-            task("A", 2000L);
-            // 第一个任务执行完毕后，再执行第二个任务。
-            task("B", 2000L);
-        });
-        thread.start();
-    }
 
     /**
-     * 示例：并发执行任务。
+     * 示例二：并行任务。
+     * <p>
+     * 在本示例中，我们创建两个线程，分别调用一次 `task()` 方法，观察执行顺序。
      */
     static void example02() {
         // 定义线程A并启动它
@@ -56,28 +61,34 @@ public class TestCooperation {
         threadB.start();
     }
 
+
     /**
-     * 示例：等待其他任务完成。
+     * 示例三：等待任务完成。
+     * <p>
+     * 在本示例中，我们在主线程中创建一个子线程，并使主线程等待子线程任务完成。
      */
     static void example03() {
         System.out.println("Task root start.");
-        // 定义线程A并启动它
-        Thread threadA = new Thread(() -> {
-            task("A", 2000L);
+        // 定义子线程并启动它
+        Thread subThread = new Thread(() -> {
+            task("sub", 2000L);
         });
-        threadA.start();
+        subThread.start();
 
         try {
-            // 在当前线程中调用线程A的"join()"方法，等待线程A结束再继续运行。
-            threadA.join();
+            // 在当前线程中调用子线程的 `join()` 方法，等待子线程结束再继续运行。
+            subThread.join();
             System.out.println("Task root end.");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+
     /**
-     * 示例：获取其他任务的结果。
+     * 示例四：获取任务结果。
+     * <p>
+     * 在本示例中，我们在主线程中创建一个子线程，使主线程等待子线程任务完成，并获取子线程的结果。
      */
     static void example04() {
         System.out.println("Task Root start.");
@@ -103,26 +114,11 @@ public class TestCooperation {
         }
     }
 
-    /**
-     * 定义MyTask类，以便创建多个Task对象。
-     */
-    static class MyTask implements Callable<Integer> {
-
-        private final String name;
-
-        public MyTask(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public Integer call() {
-            task(name, 2000);
-            return 114514;
-        }
-    }
 
     /**
-     * 示例：合并多个任务的结果。
+     * 示例五：合并任务结果。
+     * <p>
+     * 在本示例中，我们通过FutureTask定义两个并行任务，并使主线程等待它们完成，最后合并二者的结果。
      */
     static void example05() {
         // 创建两个FutureTask实例
@@ -145,6 +141,25 @@ public class TestCooperation {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 定义MyTask类，以便创建多个Task对象。
+     */
+    static class MyTask implements Callable<Integer> {
+
+        private final String name;
+
+        public MyTask(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public Integer call() {
+            task(name, 2000);
+            return 114514;
+        }
+    }
+
 
     /**
      * 获取线程名称。

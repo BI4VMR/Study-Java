@@ -33,6 +33,7 @@ public class TestThread {
         }
     }
 
+
     /**
      * 示例二：创建线程（实现Runnable接口）。
      * <p>
@@ -63,6 +64,7 @@ public class TestThread {
         }
     }
 
+
     /**
      * 示例三：守护线程。
      * <p>
@@ -79,6 +81,7 @@ public class TestThread {
 
         System.out.println("Main thread finished.");
     }
+
 
     /**
      * 示例四：线程休眠。
@@ -100,6 +103,7 @@ public class TestThread {
         // 启动线程，执行构造方法传入的任务。
         thread.start();
     }
+
 
     /**
      * 示例五：中断未阻塞的任务。
@@ -136,6 +140,7 @@ public class TestThread {
         }
     }
 
+
     /**
      * 示例六：中断已阻塞的任务。
      * <p>
@@ -162,6 +167,7 @@ public class TestThread {
         // 向子线程发出中断信号
         subThread.interrupt();
     }
+
 
     /**
      * 获取当前时间。

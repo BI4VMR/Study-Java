@@ -11,19 +11,39 @@ public class TestThreadSync {
         example01();
     }
 
+    // 静态全局变量，表示商品库存数量。
+    static int count = 10;
+
     /**
-     * 示例：竞态条件。
+     * 示例一：竞态条件。
+     * <p>
+     * 在本示例中，我们以“多人购买同一款商品”场景为例，展示竞态条件造成的问题。
      */
     static void example01() {
-        // 定义三个线程，模拟三个客户，它们的任务都是循环购买商品。
-        Thread thread1 = new BuyThread();
+        // 定义任务：循环购买商品。
+        Runnable task = () -> {
+            while (true) {
+                // 如果仍有存货，则进行购买。（动作一）
+                if (count > 0) {
+                    // 更新库存数量。（动作二）
+                    count--;
+                    // 输出日志（动作三）
+                    System.out.println(Thread.currentThread().getName() + " -> Buy one good, remain count is: " + count);
+                } else {
+                    break;
+                }
+            }
+        };
+
+        // 定义三个线程，模拟三个客户。
+        Thread thread1 = new Thread(task);
         thread1.setName("客户A");
-        Thread thread2 = new BuyThread();
+        Thread thread2 = new Thread(task);
         thread2.setName("客户B");
-        Thread thread3 = new BuyThread();
+        Thread thread3 = new Thread(task);
         thread3.setName("客户C");
 
-        // 依次开启三个任务，模拟三个客户的购买行为。
+        // 开启三个任务
         thread1.start();
         thread2.start();
         thread3.start();
