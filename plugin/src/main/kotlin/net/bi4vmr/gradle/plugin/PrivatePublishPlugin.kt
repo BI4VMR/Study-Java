@@ -17,7 +17,7 @@ import org.gradle.kotlin.dsl.register
 /**
  * 私有Maven发布插件。
  *
- * @author BI4VMR@outlook.com
+ * @author bi4vmr@outlook.com
  * @since 1.0.0
  */
 class PrivatePublishPlugin : Plugin<Project> {
@@ -33,14 +33,20 @@ class PrivatePublishPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         // 检查仓库是否可用
         if (netTestResult == null) {
-            if (NetUtil.scanByTCP("172.16.5.1", 8081)) {
-                LogUtil.info("Current host is in private network, set publish URL to LAN repositories.")
+            if (NetUtil.scanByTCP(MavenRepos.PRIVATE_LAN.host, MavenRepos.PRIVATE_LAN.port)) {
+                LogUtil.info("Use LAN address to connect private repositories.")
                 netTestResult = MavenRepos.PRIVATE_LAN
-            } else if (NetUtil.scanByTCP("127.0.0.1", 8081)) {
-                LogUtil.info("Current host is not in private network, set publish URL to LOCAL repositories.")
+            } else if (NetUtil.scanByTCP(MavenRepos.PRIVATE_HOSTNAME.host, MavenRepos.PRIVATE_HOSTNAME.port)) {
+                LogUtil.info("Use Hostname to connect private repositories.")
+                netTestResult = MavenRepos.PRIVATE_HOSTNAME
+            } else if (NetUtil.scanByTCP(MavenRepos.PRIVATE_DYNV6.host, MavenRepos.PRIVATE_DYNV6.port)) {
+                LogUtil.info("Use DynV6 domain to connect private repositories.")
+                netTestResult = MavenRepos.PRIVATE_DYNV6
+            } else if (NetUtil.scanByTCP(MavenRepos.PRIVATE_LOCAL.host, MavenRepos.PRIVATE_LOCAL.port)) {
+                LogUtil.info("Private repositories are not reachable, use local repositories.")
                 netTestResult = MavenRepos.PRIVATE_LOCAL
             } else {
-                LogUtil.info("Current host is not in private network, can only publish to MAVEN_LOCAL repository.")
+                LogUtil.info("Both private and local repositories are not reachable, use Maven local repository.")
                 netTestResult = MavenRepos.PRIVATE_MAVEN_LOCAL
             }
         }
@@ -64,13 +70,9 @@ class PrivatePublishPlugin : Plugin<Project> {
 
                 target.extensions.configure<PublishingExtension> {
                     repositories {
-                        val repoURL = if (netTestResult == MavenRepos.PRIVATE_LAN) {
-                            // 内网私有仓库
-                            "http://172.16.5.1:8081/repository/maven-private/"
-                        } else {
-                            // 本机内置仓库
-                            "http://127.0.0.1:8081/repository/maven-private/"
-                        }
+                        val repoURL = requireNotNull(netTestResult).url
+                            // 读取地址为私有仓库与镜像仓库的聚合地址，因此写入地址需要替换为指定的私有仓库。
+                            .replace("maven-union", "maven-private")
 
                         maven {
                             name = "Private"
@@ -120,11 +122,11 @@ class PrivatePublishPlugin : Plugin<Project> {
                 // 根据模块类型配置是否上传源码包和文档包
                 if (target.isAndroidLib()) {
                     /*
-                     * 自从Gradle 7.0开始，Android Library默认会发布源码与文档，且无法在 `afterEvaluate {}` 阶段修改配置，因此无法
+                     * 自从Gradle 7.0开始，Android Library默认会发布源码，且无法在 `afterEvaluate {}` 阶段修改配置，因此无法
                      * 通过插件的Extensions修改此行为，目前需要用户在 `android {}` 块中手动进行配置。
                      */
                     if (!ext.uploadSources || !ext.uploadJavadoc) {
-                        throw IllegalArgumentException("This version of Gradle will upload sources and docs automatically, plugin can not interrupt this behavior, please use `publishing {}` in `android {}` to config manually!")
+                        throw IllegalArgumentException("This version of Gradle will upload sources automatically, plugin can not interrupt this behavior, please use `publishing {}` in `android {}` to config manually!")
                     }
                 } else {
                     target.extensions.configure<JavaPluginExtension> {
