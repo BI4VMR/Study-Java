@@ -1,7 +1,5 @@
 package net.bi4vmr.study.sync;
 
-import java.util.Random;
-
 /**
  * 测试代码 - 数据同步。
  *
@@ -45,7 +43,7 @@ public class TestThreadSync {
         Thread thread3 = new Thread(task);
         thread3.setName("客户C");
 
-        // 开启三个任务
+        // 所有客户开始购买商品
         thread1.start();
         thread2.start();
         thread3.start();
@@ -115,18 +113,8 @@ public class TestThreadSync {
     synchronized static boolean buy() {
         if (count <= 0) {
             // 库存售空，返回 `false` 。
-            try {
-                Thread.sleep(new Random().nextInt(9) * 200L);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
             return false;
         } else {
-            try {
-                Thread.sleep(new Random().nextInt(9) * 100L);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
             // 库存非空，购买一件商品并返回 `true` 。
             count--;
             System.out.println(Thread.currentThread().getName() + " -> Buy one good, remain count is: " + count);
@@ -144,10 +132,10 @@ public class TestThreadSync {
             public synchronized void run() {
                 try {
                     Thread.sleep(3000L);
+                    this.wait();
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                this.notify();
             }
         });
         thread1.setName("客户1");
