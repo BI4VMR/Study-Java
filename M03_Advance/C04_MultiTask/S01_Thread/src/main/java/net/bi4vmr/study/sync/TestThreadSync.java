@@ -10,7 +10,7 @@ import java.util.Random;
 public class TestThreadSync {
 
     public static void main(String[] args) {
-        example02();
+        example03();
     }
 
     // 全局变量，表示商品库存数量。
@@ -53,6 +53,8 @@ public class TestThreadSync {
 
     /**
      * 示例二：同步代码块。
+     * <p>
+     * 在本示例中，我们通过同步代码块解决前文示例中的竞态条件问题。
      */
     static void example02() {
         // 定义任务：循环购买商品。
@@ -61,11 +63,6 @@ public class TestThreadSync {
                 // 加锁，确保以下三个操作一次性执行完毕，中途不会被其他线程打断。
                 synchronized (TestThreadSync.class) {
                     if (count > 0) {
-                        try {
-                            Thread.sleep(new Random().nextInt(9) * 200L);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
                         count--;
                         System.out.println(Thread.currentThread().getName() + " -> Buy one good, remain count is: " + count);
                     } else {
@@ -91,6 +88,8 @@ public class TestThreadSync {
 
     /**
      * 示例三：同步方法。
+     * <p>
+     * 在本示例中，我们通过同步方法解决前文示例中的竞态条件问题。
      */
     static void example03() {
         // 定义任务：循环购买商品。
@@ -114,10 +113,20 @@ public class TestThreadSync {
 
     // 同步方法，整段方法体都需要同步。
     synchronized static boolean buy() {
-        if (count < 0) {
+        if (count <= 0) {
             // 库存售空，返回 `false` 。
+            try {
+                Thread.sleep(new Random().nextInt(9) * 200L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             return false;
         } else {
+            try {
+                Thread.sleep(new Random().nextInt(9) * 100L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             // 库存非空，购买一件商品并返回 `true` 。
             count--;
             System.out.println(Thread.currentThread().getName() + " -> Buy one good, remain count is: " + count);
