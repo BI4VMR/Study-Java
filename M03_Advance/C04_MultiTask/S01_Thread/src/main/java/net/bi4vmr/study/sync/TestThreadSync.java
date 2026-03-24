@@ -1,5 +1,9 @@
 package net.bi4vmr.study.sync;
 
+import java.util.ArrayList;
+import java.util.EventListener;
+import java.util.List;
+
 /**
  * 测试代码 - 数据同步。
  *
@@ -122,34 +126,69 @@ public class TestThreadSync {
         }
     }
 
+
     /**
-     * 示例：等待与唤醒。
+     * 示例四：选择合适的同步对象。
+     * <p>
+     * 在本示例中，我们通过同步方法解决前文示例中的竞态条件问题。
      */
-    static void example04() {
+    static class BusinessManager {
 
-        Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public synchronized void run() {
-                try {
-                    Thread.sleep(3000L);
-                    this.wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        thread1.setName("客户1");
+        private int sum = 0;
 
-        synchronized (thread1) {
-            // 定义三个线程，模拟三个客户，它们的任务都是循环购买商品。
-            thread1.start();
+        private final List<EventListener> listeners = new ArrayList<>();
 
-            try {
-                thread1.wait();
-            } catch (Exception e) {
-                e.printStackTrace();
+        // 注册监听器
+        public synchronized void addListener(EventListener l) {
+            if (!listeners.contains(l)) {
+                listeners.add(l);
             }
         }
 
+        // 注销监听器
+        public synchronized void removeListener(EventListener l) {
+            listeners.remove(l);
+        }
+
+        // 计数业务
+        public synchronized void counting() {
+            sum++;
+            System.out.println("New count is: " + sum);
+        }
+    }
+
+
+    static class BusinessManager2 {
+
+        private int sum = 0;
+
+        // 创建对象，作为计数业务的锁。
+        private final Object lock = new Object();
+
+        private final List<EventListener> listeners = new ArrayList<>();
+
+        // 注册监听器
+        public void addListener(EventListener l) {
+            synchronized (listeners) {
+                if (!listeners.contains(l)) {
+                    listeners.add(l);
+                }
+            }
+        }
+
+        // 注销监听器
+        public void removeListener(EventListener l) {
+            synchronized (listeners) {
+                listeners.remove(l);
+            }
+        }
+
+        // 计数业务
+        public void counting() {
+            synchronized (lock) {
+                sum++;
+                System.out.println("New count is: " + sum);
+            }
+        }
     }
 }
