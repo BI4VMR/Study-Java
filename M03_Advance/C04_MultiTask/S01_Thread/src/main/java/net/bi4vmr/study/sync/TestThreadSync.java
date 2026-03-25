@@ -130,7 +130,7 @@ public class TestThreadSync {
     /**
      * 示例四：选择合适的同步对象。
      * <p>
-     * 在本示例中，我们通过同步方法解决前文示例中的竞态条件问题。
+     * 在本示例中，我们展示同步对象选择不当所造成的影响，并提供合理的解决方案。
      */
     static class BusinessManager {
 
@@ -146,7 +146,7 @@ public class TestThreadSync {
         }
 
         // 注销监听器
-        public synchronized void removeListener(EventListener l) {
+        public void removeListener(EventListener l) {
             listeners.remove(l);
         }
 
