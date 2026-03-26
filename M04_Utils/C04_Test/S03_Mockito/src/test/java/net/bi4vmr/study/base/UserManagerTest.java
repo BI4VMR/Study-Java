@@ -1,10 +1,11 @@
 package net.bi4vmr.study.base;
 
+import net.bi4vmr.study.ReflectUtil;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +18,13 @@ import java.util.Map;
  */
 public class UserManagerTest {
 
+    /**
+     * 示例一：模拟待测组件的依赖项。
+     * <p>
+     * 在本示例中，我们创建Mock对象，并将它们注入到待测对象中，实现依赖隔离。
+     */
     @Test
-    public void testGetUserNames() {
+    public void test_GetUserNames() {
         // 模拟数据
         Map<Long, String> mockDatas = new HashMap<>();
         mockDatas.put(1L, "来宾账户");
@@ -32,13 +38,7 @@ public class UserManagerTest {
 
         // 构造待测类的对象，并注入Mock对象作为依赖。
         UserManager manager = new UserManager();
-        try {
-            Field field = manager.getClass().getDeclaredField("mDBHelper");
-            field.setAccessible(true);
-            field.set(manager, mockDBHelper);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ReflectUtil.setFieldValue(manager, "mDBHelper", mockDBHelper);
 
         // 调用待测方法
         List<String> users = manager.getUserNames();

@@ -21,11 +21,4 @@ public class UserManager {
                 .values();
         return new ArrayList<>(collection);
     }
-
-    // 获取所有用户名称（新增了日志记录的步骤）
-    public List<String> getUserNames2() {
-        Collection<String> collection = mDBHelper.queryUsers()
-                .values();
-        return new ArrayList<>(collection);
-    }
 }
