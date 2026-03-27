@@ -1,13 +1,15 @@
 package net.bi4vmr.study.advance;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.mockStatic;
+
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
+import org.mockito.MockedStatic;
 
-import java.util.List;
 import java.util.logging.Level;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
 
 /**
  * 参数捕获器使用案例。
@@ -19,46 +21,45 @@ public class CaptorTest {
 
     /**
      * 示例二十一：捕获回调接口并模拟事件。
-     *
+     * <p>
      * 在本示例中，我们捕获被测对象向依赖组件注册的监听器实例，并模拟事件触发。
      */
     @Test
-    public void testBase() {
-        /*
-         * 注意：由于标准Mockito不支持静态方法Mock，此处假设LogConfigTool提供实例方法，
-         * 或者使用mockito-inline扩展进行MockStatic。
-         *
-         * 为了演示通用用法，此处以LogManager内部调用为例。
-         */
+    public void test_Base() {
+        // 创建LogConfigTool的静态Mock对象
+        try (MockedStatic<LogConfigTool> toolMS = mockStatic(LogConfigTool.class)) {
+            // 创建被测类的实例
+            LogManager manager = new LogManager();
+            System.out.println("初始的日志级别：" + manager.getMinLevel());
 
-        // 创建监听器的Mock对象
-        LogManager.StateCallback mockListener = mock(LogManager.StateCallback.class);
+            // 创建ArgumentCaptor，捕获LogManager注册的监听器。
+            ArgumentCaptor<LogConfigTool.ConfigListener> captor = ArgumentCaptor.forClass(LogConfigTool.ConfigListener.class);
+            // 通过静态Mock对象验证回调方法，并捕获LogManager传入的实现。
+            toolMS.verify(() -> LogConfigTool.addConfigListener(captor.capture()));
 
-        // 创建ArgumentCaptor
-        ArgumentCaptor<Long> captor = ArgumentCaptor.forClass(Long.class);
+            // 调用捕获到的监听器方法，模拟事件回调。
+            captor.getValue().onLevelChange(Level.WARNING);
+            System.out.println("事件触发后的日志级别：" + manager.getMinLevel());
 
-        // 创建被测类的实例
-        LogManager manager = new LogManager();
-        manager.saveLog(mockListener);
-
-        // 验证并捕获参数
-        verify(mockListener).onEnd(captor.capture());
-
-        System.out.println("捕获到的耗时：" + captor.getValue());
-        assertEquals(150L, (long) captor.getValue());
+            // 验证事件触发是否确实改变了被测对象的属性
+            assertEquals(Level.WARNING, manager.getMinLevel());
+        }
     }
 
     /**
      * 示例二十二：捕获多次调用的参数。
-     *
+     * <p>
      * 在本示例中，我们捕获被测对象向依赖组件注册的监听器实例，并计算平均耗时。
      */
     @Test
-    public void testMultiple() {
+    public void test_Multiple() {
+        // 创建ArgumentCaptor，捕获每次监听器返回的耗时数据。
+        ArgumentCaptor<Long> captor = ArgumentCaptor.forClass(Long.class);
+
         // 创建监听器的Mock对象
         LogManager.StateCallback mockListener = mock(LogManager.StateCallback.class);
-        // 创建ArgumentCaptor
-        ArgumentCaptor<Long> captor = ArgumentCaptor.forClass(Long.class);
+        // 定义行为：每当监听器的 `onEnd()` 方法被调用时，捕获其返回的参数。
+        doNothing().when(mockListener).onEnd(captor.capture());
 
         // 创建被测类的实例
         LogManager manager = new LogManager();
@@ -67,18 +68,13 @@ public class CaptorTest {
             manager.saveLog(mockListener);
         }
 
-        // 验证被调用5次，并捕获所有参数
-        verify(mockListener, times(5)).onEnd(captor.capture());
-
-        // 获取所有捕获到的参数
-        List<Long> values = captor.getAllValues();
-        long sum = 0;
-        for (int i = 0; i < values.size(); i++) {
-            long v = values.get(i);
-            System.out.println("第" + (i + 1) + "次调用，耗时：" + v + " ms。");
-            sum += v;
+        // 查看捕获到的参数
+        for (int i = 0; i < captor.getAllValues().size(); i++) {
+            long time = captor.getAllValues().get(i);
+            System.out.println("第" + (i + 1) + "次调用，耗时：" + time + "ms。");
         }
         // 计算平均耗时
-        System.out.println("平均耗时：" + (sum / (double) values.size()) + " ms。");
+        double average = captor.getAllValues().stream().mapToLong(Long::longValue).average().orElse(0);
+        System.out.println("平均耗时：" + average + "ms。");
     }
 }

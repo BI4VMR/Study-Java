@@ -1,6 +1,5 @@
 package net.bi4vmr.study.advance;
 
-import java.util.function.Consumer;
 import java.util.logging.Level;
 
 /**
@@ -13,16 +12,21 @@ public class LogConfigTool {
 
     private static ConfigListener mListener;
 
-    public static void addConfigListener(ConfigListener listener) {
-        mListener = listener;
+    /**
+     * 注册回调。
+     *
+     * @param l 监听器实现。
+     */
+    public static void addConfigListener(ConfigListener l) {
+        mListener = l;
     }
 
-    public static void prepare(Consumer<String> callback) {
-        // 模拟准备过程
-        callback.accept("/real/log/path/");
-    }
-
+    /**
+     * 回调接口：日志配置变更。
+     */
     public interface ConfigListener {
+
+        // 回调方法：最小日志级别变更
         void onLevelChange(Level level);
     }
 }
