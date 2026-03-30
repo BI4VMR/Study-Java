@@ -14,7 +14,7 @@ import org.junit.Test;
 public class SpyTest {
 
     /**
-     * 示例二十五：Spy模式。
+     * 示例十六：Spy模式。
      * <p>
      * 在本示例中，我们创建MemoryInfo的Spy对象，并为 `getFreeMemory()` 方法定义行为，模拟剩余内存较低的场景。
      */
