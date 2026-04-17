@@ -4,15 +4,16 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * 测试类：概述。
+ * 示例代码：BigDecimal。
  *
- * @author BI4VMR@outlook.com
+ * @author bi4vmr@outlook.com
  * @since 1.0.0
  */
 public class TestBigDecimal {
 
     public static void main(String[] args) {
-        example02();
+        BigDecimal b = new BigDecimal("0.0");
+        System.out.println("b=" + b.equals(BigDecimal.ZERO));
     }
 
     /**

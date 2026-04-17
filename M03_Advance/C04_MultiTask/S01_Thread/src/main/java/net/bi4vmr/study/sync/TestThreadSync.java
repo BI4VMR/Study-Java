@@ -5,9 +5,10 @@ import java.util.EventListener;
 import java.util.List;
 
 /**
- * 测试代码 - 数据同步。
+ * 示例代码：数据同步。
  *
  * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class TestThreadSync {
 
