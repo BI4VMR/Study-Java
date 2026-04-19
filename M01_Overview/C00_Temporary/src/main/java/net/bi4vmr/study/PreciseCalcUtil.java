@@ -3,14 +3,14 @@ package net.bi4vmr.study;
 import java.math.BigDecimal;
 
 /**
- * 数学计算工具
+ * 高精度计算工具。
  *
- * @author BI4VMR
- * @version 1.0
+ * @author bi4vmr@outlook.com
+ * @since 1.0.0
  */
 public class PreciseCalcUtil {
 
-    //除法运算默认精度
+    // 除法运算的默认精度
     private static final int DIVIDE_SCALE = 10;
 
     /**
@@ -46,7 +46,7 @@ public class PreciseCalcUtil {
      * @param v2 乘数
      * @return 两个参数之积
      */
-    public static double accurateMtp(double v1, double v2) {
+    public static double multiply(double v1, double v2) {
         BigDecimal d1 = new BigDecimal(String.valueOf(v1));
         BigDecimal d2 = new BigDecimal(String.valueOf(v2));
         return d1.multiply(d2).doubleValue();
@@ -61,9 +61,9 @@ public class PreciseCalcUtil {
      * @param v2 除数
      * @return 两个参数之商
      */
-    public static double accurateDiv(double v1, double v2) {
-        //使用默认精度计算
-        return accurateDiv(v1, v2, DIVIDE_SCALE);
+    public static double divide(double v1, double v2) {
+        // 使用默认精度计算
+        return divide(v1, v2, DIVIDE_SCALE);
     }
 
     /**
@@ -76,8 +76,8 @@ public class PreciseCalcUtil {
      * @param scale 精确度，表示精确到小数点以后第scale位。
      * @return 两个参数之商
      */
-    public static double accurateDiv(double v1, double v2, int scale) {
-        //输入参数不合法时，使用默认精度计算。
+    public static double divide(double v1, double v2, int scale) {
+        // 输入参数不合法时，使用默认精度计算。
         if (scale < 0) {
             scale = DIVIDE_SCALE;
         }
