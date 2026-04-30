@@ -17,25 +17,28 @@ public class TestGenerics {
     public static void main(String[] args) {
         // example03();
 
-        /* 数组是协变的 */
-        // 声明String数组
-        String[] array = {"A", "B", "C"};
-        // Object是String的父类，因此可以将String数组赋值给Object数组。
-        Object[] array2 = array;
-        // 但仍不可写入非String数据，JVM会检查传入元素是否与数组匹配，并抛出ArrayStoreException异常。
-        array2[0] = 100;
-
-
-        /* 泛型是非协变的 */
-        // 声明字符串列表
+        // 测试集合：String列表
         List<String> list = new ArrayList<>();
-        // Object是String的父类，但不能将List<String>赋值给List<Object>，编译器会提示错误。
-        // List<Object> list2 = list;
+        list.add("Hello");
+        list.add("World");
 
-        // 加入通配符后，泛型列表是协变的，可以将字符串列表赋值给Object列表。
-        List<? extends Object> list3 = list;
-        list3.get(0); // 读取元素时可以正常获取到字符串数据
-        // list3.add("string"); // 编译时将会报错，无法添加元素到列表中
+        // 通配符：元素为CharSequence或其子类，String确实是CharSequence的子类，因此该语句是正确的。
+        List<? extends CharSequence> list2 = list;
+
+        // 此时元素的类型为CharSequence
+        CharSequence element = list2.get(0);
+        System.out.println("读出元素：" + element);
+
+        // 编译器不允许写入元素，因为 `list2` 元素已泛化为 `CharSequence` 类型，外部传入的可能不是String类型，若允许写入会破坏逻辑。
+        // list2.add("TEXT");
+
+        List<? super Number> list3 = new ArrayList<Serializable>();
+
+        // 允许写入Number及其子类的元素，编译器会检查传入元素是否与声明的泛型类型兼容。
+        list3.add(1);
+        list3.add(1.01);
+
+        Object element2 = list3.get(0); // 读取元素时只能获取到Object类型的数据
     }
 
 
@@ -145,39 +148,62 @@ public class TestGenerics {
         }
     }
 
+
     /**
-     * 获取文本。
-     *
-     * @param num 数字。
+     * 示例五：泛型约束。
+     * <p>
+     * 在本示例中，我们编写一个泛型方法，将数值型对象的数值转换为文本并返回。
      */
-    private static <T extends Number & Serializable> String getText(T num) {
-        // 调用Number类中的方法
-        double d = num.doubleValue();
+    static void example05() {
+        // 泛型参数为Integer，是Number的子类，编译通过。
+        Integer integer = 100;
+        String text = getText(integer);
+        System.out.println(text);
+
+
+        // 泛型参数为String，非Number的子类，编译失败。
+        // String text2 = getText("TEXT");
+    }
+
+    /**
+     * 输出数值型对象值的文本。
+     *
+     * @param input 输入对象。
+     * @return 数值的文本形式。
+     */
+    private static <N extends Number & Serializable> String getText(N input) {
+        // `input` 的类型被限制为 `Number` 的子类，因此我们可以调用 `doubleValue()` 方法来获取数值。
+        double d = input.doubleValue();
         return Double.toString(d);
     }
 
-    /**
-     * 示例：上下界。
-     */
-    static void example05() {
-        Integer integer = 100;
-        // 泛型参数类型为Integer，没有错误。
-        String text = getText(integer);
-        System.out.println(text);
 
-        // 泛型参数类型为String，编译时将会报错。
-        // String text1 = getText("TEXT");
+    /**
+     * 示例：数组是协变的。
+     */
+    static void exampleNoTitle01() {
+        // 声明String数组
+        String[] array = {"A", "B", "C"};
+
+        // Object是String的父类，因此可以将String数组赋值给Object数组。
+        Object[] array2 = array;
+
+        // 但仍不可写入非String数据，JVM会检查传入元素是否与数组匹配，并抛出ArrayStoreException异常。
+        array2[0] = 100;
     }
 
-    /**
-     * 示例：上下界。
-     */
-    static void example06() {
-        Integer integer = 100;
-        String text = getText(integer);
-        System.out.println(text);
 
-        // 泛型参数类型为String，编译时将会报错。
-        // String text1 = getText("TEXT");
+    /**
+     * 示例：泛型是非协变的。
+     */
+    static void exampleNoTitle02() {
+        // 声明字符串列表
+        List<String> list = new ArrayList<>();
+
+        // Object是String的父类，但不能将List<String>赋值给List<Object>，编译器会提示错误。
+        // List<Object> list2 = list;
+
+        // 因为前一条语句编译失败，可以防止我们进一步写出其他错误的代码。
+        // list2.add(100);
     }
 }
