@@ -1,6 +1,7 @@
 package net.bi4vmr.study.lambda;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -25,12 +26,7 @@ public class TestBase {
      */
     static void example01() {
         // 创建测试列表
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
+        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
 
 
         // 设置排序规则，将所有元素降序排列。
@@ -55,12 +51,7 @@ public class TestBase {
      */
     static void example02() {
         // 创建测试列表
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
+        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
 
 
         // 设置排序规则，将所有元素降序排列。
@@ -79,12 +70,7 @@ public class TestBase {
      */
     static void example03() {
         // 创建测试列表
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
+        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
 
 
         // 将Lambda参数传递给 `reverse()` 方法，并返回其结果。
@@ -123,10 +109,8 @@ public class TestBase {
 
 
         // 创建多个线程，复用同一个任务
-        Thread thread1 = new Thread(task);
-        thread1.start();
-        Thread thread2 = new Thread(task);
-        thread2.start();
+        new Thread(task).start();
+        new Thread(task).start();
     }
 
 
