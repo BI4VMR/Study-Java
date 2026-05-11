@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * 示例代码：基本应用。
@@ -15,7 +14,7 @@ import java.util.function.Consumer;
 public class TestBase {
 
     public static void main(String[] args) {
-        example03();
+        example07();
     }
 
 
@@ -28,7 +27,6 @@ public class TestBase {
         // 创建测试列表
         List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
 
-
         // 设置排序规则，将所有元素降序排列。
         list.sort(new Comparator<Integer>() {
 
@@ -39,10 +37,10 @@ public class TestBase {
             }
         });
 
-
         // 输出排序后的结果
         System.out.println(list);
     }
+
 
     /**
      * 示例二：将整数列表中的元素倒序排列（使用Lambda表达式）。
@@ -53,10 +51,8 @@ public class TestBase {
         // 创建测试列表
         List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
 
-
         // 设置排序规则，将所有元素降序排列。
         list.sort((o1, o2) -> o2.compareTo(o1));
-
 
         // 输出排序后的结果
         System.out.println(list);
@@ -101,12 +97,11 @@ public class TestBase {
     /**
      * 示例四：引用Lambda表达式。
      * <p>
-     * 在本示例中，我们使用方法引用简化Lambda表达式。
+     * 在本示例中，我们使用Lambda表达式声明线程任务，并创建多个线程执行该任务。
      */
     static void example04() {
         // 将Lambda表达式保存为函数式接口类型的变量
-        Runnable task = () -> System.out.println("Thread is running. Name: " + Thread.currentThread().getName());
-
+        Runnable task = () -> System.out.println("Thread Name: " + Thread.currentThread().getName());
 
         // 创建多个线程，复用同一个任务
         new Thread(task).start();
@@ -117,7 +112,7 @@ public class TestBase {
     /**
      * 示例五：定义数据转换接口。
      * <p>
-     * 在本示例中，我们定义一个函数式接口 `Transformer`，将一种类型的数据转换为另一种类型。
+     * 在本示例中，我们定义一个函数式接口，表示将一种类型的数据转换为另一种类型。
      *
      * @param <I> 原始类型。
      * @param <O> 转换后的类型。
@@ -133,28 +128,59 @@ public class TestBase {
     /**
      * 示例六： `this` 关键字。
      * <p>
-     * 在本示例中，我们使用方法引用简化Lambda表达式。
+     * 在本示例中，我们辨析Lambda表达式与匿名内部类中 `this` 关键字的区别。
      */
     static void example06() {
-        new TestBase().test();
+        new TestBase().testThis();
     }
 
-    void test() {
-        // Lambda表达式中的 `this` 关键字指向包含它的实例，即 `TestBase` 的实例。
-        Consumer<String> c = s -> System.out.println(this);
-        c.accept("Hello, World!");
+    void testThis() {
+        // 测试类实例的 `this` 引用
+        System.out.println("this in test class: " + this);
 
-        Consumer<String> c2 = new Consumer<>() {
+
+        // Lambda表达式中的 `this` 指向包含它的实例，即 `TestBase` 的实例。
+        Runnable lambda = () -> System.out.println("this in lambda: " + this);
+        lambda.run();
+
+
+        // 匿名内部类中的 `this` 指向类的实例，可以访问其属性。
+        Runnable object = new Runnable() {
 
             // 匿名内部类可以拥有属性
             private String name = "Consumer";
 
             @Override
-            public void accept(String s) {
-                // `this` 指向匿名内部类实例，可以访问其属性。
-                System.out.println(this.name);
+            public void run() {
+                System.out.println("this in annonymous class: " + this);
+                // `this` 可以访问匿名内部类的属性
+                System.out.println("get name by this: " + this.name);
             }
         };
-        c2.accept("Hello, World!");
+        object.run();
+    }
+
+
+    /**
+     * 示例七：捕获外部变量。
+     * <p>
+     * 在本示例中，我们尝试在Lambda表达式中访问和修改外部变量，并分析限制条件。
+     */
+    static void example07() {
+        new TestBase().testCapture();
+    }
+
+    void testCapture() {
+        // 定义一个局部变量
+        String s = "-";
+
+        // 定义Lambda表达式，尝试访问和修改外部变量。
+        Runnable task = () -> {
+            // 允许读取外部变量
+            System.out.println("读取外部变量：" + s);
+
+            // 禁止修改外部变量，该语句无法通过编译。
+            // s = "modify";
+        };
     }
 }
