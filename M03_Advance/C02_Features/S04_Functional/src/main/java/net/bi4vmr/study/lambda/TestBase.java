@@ -43,7 +43,7 @@ public class TestBase {
 
 
     /**
-     * 示例二：将整数列表中的元素倒序排列（使用Lambda表达式）。
+     * 示例二：将整数列表中的元素倒序排列（Lambda表达式）。
      * <p>
      * 在本示例中，我们定义一个整数列表，并将其中的元素倒序排列。
      */
@@ -164,7 +164,7 @@ public class TestBase {
     /**
      * 示例七：捕获外部变量。
      * <p>
-     * 在本示例中，我们尝试在Lambda表达式中访问和修改外部变量，并分析限制条件。
+     * 在本示例中，我们尝试在Lambda表达式中访问与修改外部变量，并分析限制条件。
      */
     static void example07() {
         new TestBase().testCapture();
