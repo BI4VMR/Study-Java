@@ -30,6 +30,7 @@ public class TestOperator {
         System.out.println("b:" + b);
     }
 
+
     /**
      * 示例二：基本的四则运算。
      * <p>
@@ -51,26 +52,13 @@ public class TestOperator {
         System.out.println("24.0 % 7 = " + f);
     }
 
+
     /**
-     * 示例三：自增运算符的基本应用。
+     * 示例三：结果为“无穷大”的表达式。
      * <p>
-     * 在本示例中，我们使用自增运算符操作变量。
+     * 在本示例中，我们使用某个数除以浮点数的 `0` ，并观察计算结果。
      */
     static void example03() {
-        int a = 5;
-        int b = 5;
-
-        System.out.println("自增符号在前：" + (++a));
-        System.out.println("自增符号在后：" + (b++));
-        System.out.println("a = " + a + " ;b = " + b);
-    }
-
-    /**
-     * 示例四：结果为“无穷大”的表达式。
-     * <p>
-     * 在本示例中，我们使用某个数除以浮点数的"0"，并观察计算结果。
-     */
-    static void example04() {
         // 非0正数除以0，结果为正无穷。
         double a = 100 / 0.0;
         System.out.println("100除以0.0：" + a);
@@ -81,11 +69,11 @@ public class TestOperator {
     }
 
     /**
-     * 示例五：理解“无穷大”的含义。
+     * 示例四：理解“无穷大”的含义。
      * <p>
      * 在本示例中，我们对无穷大数值进行判等操作与类型转换。
      */
-    static void example05() {
+    static void example04() {
         // 比较两个正无穷值
         float x = 1 / 0.0F;
         double y = -2 / 0.0;
@@ -98,11 +86,11 @@ public class TestOperator {
     }
 
     /**
-     * 示例六：理解"NaN"的含义。
+     * 示例五：理解"NaN"的含义。
      * <p>
      * 在本示例中，我们列举一些结果为"NaN"的表达式，并对"NaN"数值进行判等操作。
      */
-    static void example06() {
+    static void example05() {
         // 浮点型0除以0结果为"NaN"
         double a = 0.0 / 0.0;
         System.out.println("a = 0.0 / 0.0 = " + a);
@@ -115,6 +103,20 @@ public class TestOperator {
         System.out.println("a == a ? " + (a == a));
         System.out.println("a == b ? " + (a == b));
         System.out.println("a is NaN ? " + Double.isNaN(a));
+    }
+
+    /**
+     * 示例六：自增运算符的基本应用。
+     * <p>
+     * 在本示例中，我们使用自增运算符操作变量。
+     */
+    static void example06() {
+        int a = 5;
+        int b = 5;
+
+        System.out.println("自增符号在前：" + (++a));
+        System.out.println("自增符号在后：" + (b++));
+        System.out.println("a = " + a + " ;b = " + b);
     }
 
     /**
@@ -179,7 +181,7 @@ public class TestOperator {
     /**
      * 示例十：条件运算符的基本应用。
      * <p>
-     * 在本示例中，我们定义两个变量 `a` 与 `b` ，如果 `a` 大于 `b` 则将 `a` 的100倍赋值给变量 `c` ；反之将 `b` 的100倍赋值给 `c` 。
+     * 在本示例中，我们定义两个变量 `a` 与 `b` ，如果 `a` 大于 `b` 则将 `a` 的 `100` 倍赋值给变量 `c` ；反之将 `b` 的 `100` 倍赋值给 `c` 。
      */
     static void example10_1() {
         int a = 1;

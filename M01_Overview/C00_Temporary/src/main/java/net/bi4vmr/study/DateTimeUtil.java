@@ -1,6 +1,13 @@
 package net.bi4vmr.study;
 
-import java.time.*;
+import java.time.DayOfWeek;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Year;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
@@ -25,16 +32,24 @@ public class DateTimeUtil {
 
     // ==================== 常量 ====================
 
-    /** 默认日期时间格式：{@code yyyy-MM-dd HH:mm:ss} */
+    /**
+     * 默认日期时间格式：{@code yyyy-MM-dd HH:mm:ss}
+     */
     public static final String PATTERN_DATETIME = "yyyy-MM-dd HH:mm:ss";
 
-    /** 日期格式：{@code yyyy-MM-dd} */
+    /**
+     * 日期格式：{@code yyyy-MM-dd}
+     */
     public static final String PATTERN_DATE = "yyyy-MM-dd";
 
-    /** 时间格式：{@code HH:mm:ss} */
+    /**
+     * 时间格式：{@code HH:mm:ss}
+     */
     public static final String PATTERN_TIME = "HH:mm:ss";
 
-    /** 系统默认时区 */
+    /**
+     * 系统默认时区
+     */
     public static final ZoneId DEFAULT_ZONE = ZoneId.systemDefault();
 
     // ==================== 内部类型 ====================
@@ -46,10 +61,14 @@ public class DateTimeUtil {
      */
     public static final class TimeRange<T> {
 
-        /** 起始时间（含） */
+        /**
+         * 起始时间（含）
+         */
         private final T start;
 
-        /** 结束时间（含） */
+        /**
+         * 结束时间（含）
+         */
         private final T end;
 
         public TimeRange(T start, T end) {
@@ -109,25 +128,12 @@ public class DateTimeUtil {
     // ==================== 获取当前时间戳 ====================
 
     /**
-     * 获取当前毫秒时间戳（UTC Epoch）。
+     * 获取当前时间戳。
      *
-     * @return 毫秒级时间戳
+     * @return UTC Epoch时间戳。
      */
-    public static long currentTimestamp() {
-        return Instant.now().toEpochMilli();
-    }
-
-    /**
-     * 获取当前毫秒时间戳（指定时区）。
-     *
-     * <p>
-     * 返回值与 {@link #currentTimestamp()} 数值相同，但可用于确认该时区下的当前瞬间。
-     *
-     * @param zoneId 目标时区
-     * @return 毫秒级时间戳
-     */
-    public static long currentTimestamp(ZoneId zoneId) {
-        return ZonedDateTime.now(zoneId).toInstant().toEpochMilli();
+    public static long currentTimeMillis() {
+        return System.currentTimeMillis();
     }
 
     // ==================== 时间戳 → DateTime ====================
