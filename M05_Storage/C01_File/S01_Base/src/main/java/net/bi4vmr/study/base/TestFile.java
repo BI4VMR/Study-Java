@@ -7,13 +7,13 @@ import java.io.IOException;
 /**
  * 测试代码 - 文件管理。
  *
- * @author BI4VMR@outlook.com
+ * @author bi4vmr@outlook.com
  * @since 1.0.0
  */
 public class TestFile {
 
     public static void main(String[] args) throws Exception {
-        example02();
+        example04();
     }
 
 
@@ -23,8 +23,9 @@ public class TestFile {
      * 在本示例中，我们通过File实例获取文件的属性。
      */
     static void example01() throws IOException {
-        String path = "M05_Storage/C01_File/S01_Base/src/main/resources/test.txt";
-        File file = new File(path);
+        String prefix = "M05_Storage/C01_File/S01_Base/src/main/resources/";
+        File file = new File(prefix + "test.txt");
+
         System.out.println("文件名称：" + file.getName());
         System.out.println("路径：" + file.getPath());
         System.out.println("绝对路径：" + file.getAbsolutePath());
@@ -63,17 +64,20 @@ public class TestFile {
         System.out.println("文件创建结果：" + result2);
     }
 
-    /*
-     * 文件管理 - 移动文件或改名
+
+    /**
+     * 示例三：修改文件名称。
+     * <p>
+     * 在本示例中，我们将“示例二”中生成的测试文件 `1.txt` 改名为 `2.txt` 。
      */
-    static void example05() {
-        File fileSrc = new File("1.txt");
-        File fileDst = new File("2.txt");
-        /*
-         * 重命名文件时，需要源文件存在，目标文件不存在，且目标目录存在。
-         *
-         * 此处为同目录移动，因此无需检查目标目录是否存在。
-         */
+    static void example03() {
+        String prefix = "M05_Storage/C01_File/S01_Base/src/main/resources/test";
+
+        // 原文件
+        File fileSrc = new File(prefix, "1.txt");
+        // 新文件
+        File fileDst = new File(prefix, "2.txt");
+
         if (fileSrc.exists() && !fileDst.exists()) {
             boolean result = fileSrc.renameTo(fileDst);
             System.out.println("文件移动结果：" + result);
@@ -82,11 +86,16 @@ public class TestFile {
         }
     }
 
-    /*
-     * 文件管理 - 删除文件
+
+    /**
+     * 示例四：删除文件。
+     * <p>
+     * 在本示例中，我们将前文“示例三”中生成的测试文件 `2.txt` 删除。
      */
     static void example04() {
-        File file = new File("1.txt");
+        String prefix = "M05_Storage/C01_File/S01_Base/src/main/resources/test";
+
+        File file = new File(prefix, "2.txt");
         // 文件存在时进行删除操作
         if (file.exists()) {
             boolean result = file.delete();
