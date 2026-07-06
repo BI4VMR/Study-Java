@@ -1,4 +1,4 @@
-package net.bi4vmr.tool.java.common.base;
+package net.bi4vmr.tool.java.common.base.system;
 
 /**
  * 操作系统类型。
@@ -53,7 +53,7 @@ public enum OSType {
         }
 
         for (String alias : aliases) {
-            if (input.toLowerCase().contains(alias)) {
+            if (input.toLowerCase().contains(alias.toLowerCase())) {
                 return true;
             }
         }

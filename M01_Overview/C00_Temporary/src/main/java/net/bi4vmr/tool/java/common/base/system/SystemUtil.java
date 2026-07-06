@@ -1,4 +1,7 @@
-package net.bi4vmr.tool.java.common.base;
+package net.bi4vmr.tool.java.common.base.system;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
@@ -11,6 +14,8 @@ import java.io.File;
  * @since 1.0.0
  */
 public class SystemUtil {
+
+    private static final Logger logger = LoggerFactory.getLogger(SystemUtil.class);
 
     /**
      * 环境变量名称：PATH。
@@ -25,11 +30,28 @@ public class SystemUtil {
     private static final String PROPERTY_OS_NAME = System.getProperty("os.name");
 
     /**
+     * 系统属性：平台架构名称。
+     */
+    private static final String PROPERTY_OS_ARCH = System.getProperty("os.arch");
+
+    /**
+     * 系统属性：操作系统版本。
+     */
+    private static final String PROPERTY_OS_VERSION = System.getProperty("os.version");
+
+    /**
      * 当前操作系统类型。
      * <p>
      * 进程启动后操作系统类型不会改变，因此仅需在类加载时获取一次该值即可。
      */
     private static final OSType OS_TYPE = getOSTypeInner();
+
+    /**
+     * 当前平台架构名称。
+     * <p>
+     * 进程启动后操作系统类型不会改变，因此仅需在类加载时获取一次该值即可。
+     */
+    private static final ArchType OS_ARCH = getArchTypeInner();
 
 
     /*
@@ -45,6 +67,17 @@ public class SystemUtil {
      */
     public static OSType getOSType() {
         return OS_TYPE;
+    }
+
+    /**
+     * 获取当前平台架构类型。
+     * <p>
+     * 类加载时通过 {@link #getArchTypeInner()} 方法解析当前平台架构类型，后续返回缓存变量的值。
+     *
+     * @return {@link ArchType} 枚举常量。
+     */
+    public static ArchType getArchType() {
+        return OS_ARCH;
     }
 
     /**
@@ -91,6 +124,23 @@ public class SystemUtil {
         return OSType.UNKNOWN;
     }
 
+    /**
+     * 获取当前平台架构名称。
+     * <p>
+     * 将 {@code os.arch} 系统属性与已知平台架构列表进行匹配，判断当前运行环境。
+     *
+     * @return {@link ArchType} 枚举常量。
+     */
+    private static ArchType getArchTypeInner() {
+        for (ArchType type : ArchType.values()) {
+            if (type.isAliasMatch(PROPERTY_OS_ARCH)) {
+                return type;
+            }
+        }
+
+        return ArchType.UNKNOWN;
+    }
+
 
     /*
      * ----- 环境变量 -----
@@ -104,7 +154,7 @@ public class SystemUtil {
     public static String getPath() {
         String rawValue = System.getenv(ENV_NAME_PATH);
         if (rawValue == null) {
-            System.err.println("SystemUtil: Environment variable [PATH] is not exist!");
+            logger.error("Environment variable [PATH] is not exist!");
             return "";
         }
         return rawValue;
