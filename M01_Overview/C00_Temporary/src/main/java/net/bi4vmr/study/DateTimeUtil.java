@@ -1,13 +1,6 @@
 package net.bi4vmr.study;
 
-import java.time.DayOfWeek;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Year;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
@@ -30,29 +23,83 @@ import java.time.temporal.TemporalAdjusters;
  */
 public class DateTimeUtil {
 
-    // ==================== 常量 ====================
+    /**
+     * 时间戳：无效值。
+     * <p>
+     * 用于表示未初始化的时间戳变量，可在不希望出现空值的场景使用。
+     */
+    public static final long TIMESTAMP_INVALID = -1L;
 
     /**
-     * 默认日期时间格式：{@code yyyy-MM-dd HH:mm:ss}
+     * 日期格式（常用）。
+     * <p>
+     * 包含年、月、日，单个数字前自动补零。例如： {@code 2026-01-01} 。
      */
-    public static final String PATTERN_DATETIME = "yyyy-MM-dd HH:mm:ss";
+    public static final String PATTERN_DATE_COMMON = "yyyy-MM-dd";
 
     /**
-     * 日期格式：{@code yyyy-MM-dd}
+     * 时间格式（常用）。
+     * <p>
+     * 包含时、分、秒， 24 小时制，单个数字前自动补零。例如： {@code 14:30:05} 。
      */
-    public static final String PATTERN_DATE = "yyyy-MM-dd";
+    public static final String PATTERN_TIME_COMMON = "HH:mm:ss";
 
     /**
-     * 时间格式：{@code HH:mm:ss}
+     * 时间格式（常用）。
+     * <p>
+     * 包含时、分， 24 小时制，单个数字前自动补零。例如： {@code 14:30} 。
      */
-    public static final String PATTERN_TIME = "HH:mm:ss";
+    public static final String PATTERN_TIME_COMMON_NOSECOND = "HH:mm";
 
     /**
-     * 系统默认时区
+     * 日期时间格式（常用）。
+     * <p>
+     * 包含年、月、日、时、分、秒， 24 小时制，单个数字前自动补零。例如： {@code 2026-01-01 14:30:05} 。
      */
-    public static final ZoneId DEFAULT_ZONE = ZoneId.systemDefault();
+    public static final String PATTERN_DATETIME_COMMON = "yyyy-MM-dd HH:mm:ss";
 
-    // ==================== 内部类型 ====================
+    /**
+     * 日期时间格式（常用）。
+     * <p>
+     * 包含年、月、日、时、分， 24 小时制，单个数字前自动补零。例如： {@code 2026-01-01 14:30} 。
+     */
+    public static final String PATTERN_DATETIME_COMMON_NOSECOND = "yyyy-MM-dd HH:mm";
+
+    /**
+     * 日期格式（常用：类型二）。
+     * <p>
+     * 包含年、月、日，单个数字前自动补零，分隔符为斜杠。例如： {@code 2026/01/01} 。
+     */
+    public static final String PATTERN_DATE_COMMON2 = "yyyy/MM/dd";
+
+    /**
+     * 日期时间格式（常用：类型二）。
+     * <p>
+     * 包含年、月、日、时、分、秒， 24 小时制，单个数字前自动补零，日期分隔符为斜杠。例如： {@code 2026/01/01 14:30:05} 。
+     */
+    public static final String PATTERN_DATETIME_COMMON2 = "yyyy/MM/dd HH:mm:ss";
+
+    /**
+     * 日期时间格式（常用：类型二）。
+     * <p>
+     * 包含年、月、日、时、分， 24 小时制，单个数字前自动补零，日期分隔符为斜杠。例如： {@code 2026/01/01 14:30} 。
+     */
+    public static final String PATTERN_DATETIME_COMMON2_NOSECOND = "yyyy/MM/dd HH:mm";
+
+    /**
+     * 日期时间格式（文件名称） 。
+     * <p>
+     * 适用于不支持 `/` 、 `:` 等符号的场景。例如： {@code 20260101_143005} 。
+     */
+    public static final String PATTERN_DATETIME_FILE = "yyyyMMdd_HHmmss";
+
+    /**
+     * 日期时间格式 (Exif) 。
+     * <p>
+     * 图像的 Exif 创建时间与修改时间格式。例如： {@code 2026:01:01 14:30:05} 。
+     */
+    public static final String PATTERN_DATETIME_EXIF = "yyyy:MM:dd HH:mm:ss";
+
 
     /**
      * 时间范围，包含起止两个端点。
@@ -104,38 +151,6 @@ public class DateTimeUtil {
         }
     }
 
-    // ==================== 获取当前时间 ====================
-
-    /**
-     * 获取当前 {@link LocalDateTime}（系统时区）。
-     *
-     * @return 当前本地日期时间
-     */
-    public static LocalDateTime now() {
-        return LocalDateTime.now();
-    }
-
-    /**
-     * 获取当前 {@link ZonedDateTime}（指定时区）。
-     *
-     * @param zoneId 目标时区
-     * @return 当前带时区的日期时间
-     */
-    public static ZonedDateTime now(ZoneId zoneId) {
-        return ZonedDateTime.now(zoneId);
-    }
-
-    // ==================== 获取当前时间戳 ====================
-
-    /**
-     * 获取当前时间戳。
-     *
-     * @return UTC Epoch时间戳。
-     */
-    public static long currentTimeMillis() {
-        return System.currentTimeMillis();
-    }
-
     // ==================== 时间戳 → DateTime ====================
 
     /**
@@ -144,9 +159,9 @@ public class DateTimeUtil {
      * @param timestamp 毫秒级时间戳
      * @return 对应的本地日期时间
      */
-    public static LocalDateTime fromTimestamp(long timestamp) {
-        return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), DEFAULT_ZONE);
-    }
+    // public static LocalDateTime fromTimestamp(long timestamp) {
+    //     return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), DEFAULT_ZONE);
+    // }
 
     /**
      * 将毫秒时间戳转为 {@link ZonedDateTime}（指定时区）。
@@ -168,7 +183,7 @@ public class DateTimeUtil {
      * @return 毫秒级时间戳
      */
     public static long toTimestamp(LocalDateTime dateTime) {
-        return dateTime.atZone(DEFAULT_ZONE).toInstant().toEpochMilli();
+        return dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 
     /**
@@ -189,9 +204,9 @@ public class DateTimeUtil {
      * @param dateTimeStr 日期时间字符串
      * @return 解析结果
      */
-    public static LocalDateTime fromString(String dateTimeStr) {
-        return fromString(dateTimeStr, PATTERN_DATETIME);
-    }
+    // public static LocalDateTime fromString(String dateTimeStr) {
+    //     return fromString(dateTimeStr, PATTERN_DATETIME);
+    // }
 
     /**
      * 将指定格式的字符串解析为 {@link LocalDateTime}。
@@ -211,9 +226,9 @@ public class DateTimeUtil {
      * @param zoneId      目标时区
      * @return 解析结果
      */
-    public static ZonedDateTime fromString(String dateTimeStr, ZoneId zoneId) {
-        return fromString(dateTimeStr, PATTERN_DATETIME, zoneId);
-    }
+    // public static ZonedDateTime fromString(String dateTimeStr, ZoneId zoneId) {
+    //     return fromString(dateTimeStr, PATTERN_DATETIME, zoneId);
+    // }
 
     /**
      * 将指定格式的字符串解析为 {@link ZonedDateTime}（指定时区）。
@@ -236,9 +251,9 @@ public class DateTimeUtil {
      * @param dateTime 日期时间
      * @return 格式化后的字符串
      */
-    public static String format(LocalDateTime dateTime) {
-        return format(dateTime, PATTERN_DATETIME);
-    }
+    // public static String format(LocalDateTime dateTime) {
+    //     return format(dateTime, PATTERN_DATETIME);
+    // }
 
     /**
      * 将 {@link LocalDateTime} 格式化为字符串（指定格式）。
@@ -257,9 +272,9 @@ public class DateTimeUtil {
      * @param dateTime 带时区的日期时间
      * @return 格式化后的字符串
      */
-    public static String format(ZonedDateTime dateTime) {
-        return format(dateTime, PATTERN_DATETIME);
-    }
+    // public static String format(ZonedDateTime dateTime) {
+    //     return format(dateTime, PATTERN_DATETIME);
+    // }
 
     /**
      * 将 {@link ZonedDateTime} 格式化为字符串（指定格式）。
